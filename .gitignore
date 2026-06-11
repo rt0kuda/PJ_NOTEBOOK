@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+outputs/*
+!outputs/
+!outputs/system-design-basics-ja.html
+!outputs/wiki-sync-server.mjs
+outputs/wiki-state.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

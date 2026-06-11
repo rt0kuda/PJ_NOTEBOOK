@@ -1,0 +1,10 @@
+{
+  "name": "pj-notebook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node outputs/wiki-sync-server.mjs --port 8765",
+    "check": "node --check outputs/wiki-sync-server.mjs"
+  }
+}
