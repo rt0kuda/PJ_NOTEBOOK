@@ -42,7 +42,7 @@
     header {
       background: var(--bg);
       color: var(--ink);
-      padding: 34px 24px 30px;
+      padding: 12px 24px 6px;
     }
 
     .wrap {
@@ -50,18 +50,28 @@
       margin: 0 auto;
     }
 
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(26px, 4vw, 42px);
+    header h1 {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      margin: 0;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 254, 250, 0.78);
+      box-shadow: 0 8px 20px rgba(111, 91, 82, 0.08);
+      font-size: 14px;
       line-height: 1.22;
       letter-spacing: 0;
+      white-space: nowrap;
     }
 
-    .lead {
-      max-width: 860px;
+    header .lead {
+      max-width: 720px;
       margin: 0;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     main {
@@ -544,14 +554,21 @@
       background:
         radial-gradient(circle at 72% 20%, rgba(241, 91, 97, 0.12), transparent 260px),
         linear-gradient(180deg, #fbf7f2 0%, #f8efe6 100%);
-      padding: 28px 24px 28px;
+      padding: 12px 24px 6px;
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
 
     header::after {
       content: "";
       position: absolute;
       inset: auto 0 0;
-      height: 36px;
+      height: 8px;
       background:
         linear-gradient(180deg, transparent, rgba(251, 247, 242, 0.96)),
         linear-gradient(90deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.18));
@@ -605,6 +622,8 @@
     .library-main-panel {
       padding: 26px 30px 34px;
       background: #fff8ef;
+      min-width: 0;
+      overflow: hidden;
     }
 
     .library-toolbar {
@@ -616,6 +635,7 @@
     }
 
     .library-search {
+      min-width: 0;
       min-height: 44px;
       display: flex;
       align-items: center;
@@ -669,24 +689,8 @@
       white-space: nowrap;
     }
 
-    .library-today-action {
-      min-height: 44px;
-      border: 1px solid #d7e7d7;
-      border-radius: 999px;
-      background: #edf7ed;
-      color: #315f3e;
-      cursor: pointer;
-      font: inherit;
-      font-size: 12px;
-      font-weight: 900;
-      padding: 11px 16px;
-      box-shadow: 0 10px 20px rgba(95, 166, 108, 0.12);
-      white-space: nowrap;
-    }
-
     .library-create-action:hover,
-    .library-search-action:hover,
-    .library-today-action:hover {
+    .library-search-action:hover {
       transform: translateY(-1px);
     }
 
@@ -736,11 +740,163 @@
       font-weight: 900;
     }
 
+    .library-shelf-switcher {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.4fr);
+      gap: 12px;
+      align-items: stretch;
+      margin: 0 0 18px;
+      padding: 12px;
+      border: 1px solid #eadfd4;
+      border-radius: 22px;
+      background: #fffdf9;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .library-shelf-current {
+      min-width: 0;
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid #eadfd4;
+      border-radius: 18px;
+      background: #fff8ef;
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .library-shelf-current:hover,
+    .library-shelf-current:focus {
+      outline: 0;
+      border-color: #f15b61;
+      box-shadow: 0 10px 22px rgba(111, 91, 82, 0.1);
+    }
+
+    .library-shelf-current-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #315a72;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 8px 16px rgba(49, 90, 114, 0.18);
+    }
+
+    .library-shelf-current-copy {
+      min-width: 0;
+      display: grid;
+      gap: 2px;
+    }
+
+    .library-shelf-current-kicker {
+      color: #9b897d;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .library-shelf-current-name,
+    .library-shelf-tab-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .library-shelf-current-name {
+      color: #5c4b43;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .library-shelf-current-desc {
+      overflow: hidden;
+      color: #8f8178;
+      font-size: 11px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .library-shelf-current-caret {
+      color: #8f2722;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .library-shelf-tabs {
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: center;
+      align-items: center;
+    }
+
+    .library-shelf-tab {
+      min-width: 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid #eadfd4;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #6f5b52;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 8px 12px;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+
+    .library-shelf-tab:hover,
+    .library-shelf-tab:focus {
+      outline: 0;
+      transform: translateY(-1px);
+      border-color: #f15b61;
+      box-shadow: 0 8px 18px rgba(111, 91, 82, 0.08);
+    }
+
+    .library-shelf-tab.is-active {
+      border-color: #f15b61;
+      background: #fff0ee;
+      color: #8f2722;
+    }
+
+    .library-shelf-tab-icon {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: #f7efe8;
+      color: #315a72;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .library-shelf-add-inline {
+      border-style: dashed;
+      color: #a7342e;
+    }
+
     .category-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
       gap: 14px;
       margin: 4px 0 4px;
+      min-width: 0;
     }
 
     .category-pill {
@@ -925,6 +1081,70 @@
       align-items: start;
     }
 
+    .wiki-mobile-bar,
+    .wiki-mobile-backdrop {
+      display: none;
+    }
+
+    .wiki-mobile-bar {
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffefa;
+      box-shadow: 0 12px 28px rgba(111, 91, 82, 0.08);
+      padding: 8px;
+    }
+
+    .wiki-mobile-menu-button,
+    .wiki-mobile-create-button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff8ef;
+      color: var(--ink);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font: inherit;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+      padding: 0 12px;
+    }
+
+    .wiki-mobile-menu-button:hover,
+    .wiki-mobile-create-button:hover {
+      border-color: #f15b61;
+      background: #fff0ee;
+    }
+
+    .wiki-mobile-title {
+      min-width: 0;
+      display: grid;
+      gap: 2px;
+    }
+
+    .wiki-mobile-kicker {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .wiki-mobile-page-title {
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .wiki-sidebar,
     .topic-board {
       border: 1px solid var(--line);
@@ -1095,6 +1315,7 @@
     }
 
     .wiki-shelf-select {
+      display: none;
       width: 100%;
       min-height: 38px;
       border: 1px solid var(--line);
@@ -1536,16 +1757,21 @@
     }
 
     .wiki-block-toolbar {
+      position: sticky;
+      top: 12px;
+      z-index: 24;
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
       border: 1px solid var(--line);
       border-radius: 14px;
       background: #fffefa;
+      box-shadow: 0 10px 24px rgba(111, 91, 82, 0.1);
       padding: 9px;
     }
 
     .wiki-block-button {
+      position: relative;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: #ffffff;
@@ -1560,6 +1786,169 @@
       border-color: #f15b61;
       color: #4f403a;
       transform: translateY(-1px);
+    }
+
+    .wiki-block-preview-popover {
+      position: fixed;
+      z-index: 30;
+      display: none;
+      width: min(320px, calc(100vw - 32px));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffefa;
+      box-shadow: 0 20px 44px rgba(111, 91, 82, 0.18);
+      color: var(--ink);
+      padding: 12px;
+      pointer-events: none;
+    }
+
+    .wiki-block-preview-popover.is-visible {
+      display: grid;
+      gap: 10px;
+    }
+
+    .wiki-block-preview-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .wiki-block-preview-title {
+      margin: 0;
+      color: #4f403a;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .wiki-block-preview-kind {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff8ef;
+      color: #8d7b70;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 7px;
+      white-space: nowrap;
+    }
+
+    .wiki-block-preview-desc {
+      margin: 0;
+      color: #6f5b52;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .wiki-block-preview-sample {
+      border: 1px solid #ead9ca;
+      border-radius: 14px;
+      background: #ffffff;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .wiki-block-preview-sample h4,
+    .wiki-block-preview-sample p {
+      margin: 0;
+    }
+
+    .wiki-block-preview-sample h4 {
+      color: #4f403a;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .wiki-block-preview-sample p {
+      color: #6f5b52;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .preview-card-grid {
+      display: grid;
+      gap: 6px;
+    }
+
+    .preview-callout {
+      border-left: 5px solid #f15b61;
+      border-radius: 12px;
+      background: #fff3e1;
+      padding: 9px;
+    }
+
+    .preview-note {
+      border: 1px solid #ead9ca;
+      border-radius: 12px;
+      background: #fff8df;
+      padding: 9px;
+    }
+
+    .preview-code {
+      border-radius: 12px;
+      background: #2b3038;
+      color: #f6f0e8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+
+    .preview-math {
+      border-radius: 12px;
+      background: #f8efe6;
+      color: #4f403a;
+      font-size: 18px;
+      font-weight: 900;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .preview-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .preview-table th,
+    .preview-table td {
+      border: 1px solid #ead9ca;
+      padding: 5px 6px;
+      text-align: left;
+    }
+
+    .preview-table th {
+      background: #edf2f5;
+      color: #263f50;
+    }
+
+    .preview-db-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px;
+      align-items: center;
+      border: 1px solid #ead9ca;
+      border-radius: 10px;
+      padding: 7px 8px;
+    }
+
+    .preview-pill {
+      border-radius: 999px;
+      background: #eaf5ed;
+      color: #315f3e;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 7px;
+      white-space: nowrap;
+    }
+
+    .preview-annotation {
+      background: linear-gradient(180deg, transparent 42%, rgba(255, 216, 102, 0.72) 42%);
+      border-radius: 5px;
+      padding: 0 2px;
     }
 
     .wiki-slash-help {
@@ -1586,6 +1975,16 @@
     .wiki-block-shell:focus-within {
       background: #fff8ef;
       box-shadow: inset 0 0 0 1px rgba(234, 223, 212, 0.8);
+    }
+
+    .summary-grid > .wiki-block-shell {
+      height: 100%;
+      margin: 0;
+    }
+
+    .summary-grid > .wiki-block-shell > .wiki-block-content,
+    .summary-grid > .wiki-block-shell > .wiki-block-content > * {
+      height: 100%;
     }
 
     .wiki-block-shell > .wiki-block-content {
@@ -1747,6 +2146,168 @@
       padding: 4px 7px;
     }
 
+    .shared-record-panel {
+      display: grid;
+      gap: 14px;
+    }
+
+    .shared-record-toolbar,
+    .shared-record-card,
+    .shared-record-section {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffefa;
+      padding: 14px;
+    }
+
+    .shared-record-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .shared-record-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .shared-record-sub {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .shared-record-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .shared-record-card {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .shared-record-card h4 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .shared-record-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .record-type-list,
+    .record-tag-list,
+    .record-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .record-type-chip,
+    .record-tag-chip {
+      border: 1px solid #eadfd4;
+      border-radius: 999px;
+      background: #f8efe6;
+      color: #6f5b52;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 8px;
+    }
+
+    .record-type-chip.is-active {
+      border-color: #f15b61;
+      background: #fff0ee;
+      color: #8f2722;
+    }
+
+    button.record-type-chip {
+      cursor: pointer;
+      font: inherit;
+      font-size: 11px;
+    }
+
+    .shared-record-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffefa;
+    }
+
+    .shared-record-table {
+      width: 100%;
+      min-width: 920px;
+      border-collapse: collapse;
+    }
+
+    .shared-record-table th,
+    .shared-record-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    .shared-record-table th {
+      background: #f8efe6;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .shared-record-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .task-status-lane {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .task-lane {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffefa;
+      padding: 12px;
+    }
+
+    .task-lane h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .dashboard-metric {
+      border-top: 5px solid #315a72;
+    }
+
+    .dashboard-metric strong {
+      color: var(--ink);
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .related-records {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
     .wiki-db-prop small {
       color: var(--muted);
       font-size: 10px;
@@ -1827,7 +2388,7 @@
 
     .wiki-tree-book-head {
       display: grid;
-      grid-template-columns: 24px minmax(0, 1fr) auto;
+      grid-template-columns: 24px minmax(0, 1fr) 76px;
       align-items: center;
       gap: 4px;
       border-radius: 14px;
@@ -1874,6 +2435,20 @@
       padding: 7px 6px;
     }
 
+    .wiki-tree-book-head .wiki-book-title::after {
+      content: "  ✎";
+      color: #9f453f;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.14s ease;
+    }
+
+    .wiki-tree-book-head:hover .wiki-book-title::after,
+    .wiki-tree-book-head:focus-within .wiki-book-title::after,
+    .wiki-tree-book-head .wiki-book-button.is-active .wiki-book-title::after {
+      opacity: 0.75;
+    }
+
     .wiki-tree-book-head .wiki-mini-button {
       opacity: 0;
       pointer-events: none;
@@ -1885,7 +2460,15 @@
       gap: 2px;
       align-items: center;
       justify-content: flex-end;
-      width: 70px;
+      width: 76px;
+      min-width: 76px;
+    }
+
+    .wiki-row-actions .wiki-mini-button,
+    .wiki-page-row-actions .wiki-mini-button {
+      flex: 0 0 auto;
+      display: inline-grid;
+      place-items: center;
     }
 
     .wiki-row-actions .wiki-mini-button[data-action="duplicate-book"],
@@ -1911,7 +2494,7 @@
 
     .wiki-page-row {
       display: grid;
-      grid-template-columns: 24px minmax(0, 1fr) auto;
+      grid-template-columns: 24px minmax(0, 1fr) 72px;
       align-items: center;
       gap: 2px;
       border-radius: 10px;
@@ -1963,7 +2546,8 @@
       align-items: center;
       justify-content: flex-end;
       gap: 2px;
-      width: 66px;
+      width: 72px;
+      min-width: 72px;
       white-space: nowrap;
     }
 
@@ -2052,6 +2636,62 @@
       background: #fff3a3;
       color: inherit;
       padding: 0 2px;
+    }
+
+    .wiki-annotation {
+      position: relative;
+      border-radius: 5px;
+      background: linear-gradient(180deg, transparent 42%, rgba(255, 216, 102, 0.68) 42%);
+      box-shadow: inset 0 -1px 0 rgba(168, 111, 18, 0.26);
+      cursor: help;
+      padding: 0 2px;
+    }
+
+    .wiki-annotation[data-annotation-color="pink"] {
+      background: linear-gradient(180deg, transparent 42%, rgba(255, 177, 190, 0.72) 42%);
+      box-shadow: inset 0 -1px 0 rgba(176, 54, 77, 0.22);
+    }
+
+    .wiki-annotation[data-annotation-color="blue"] {
+      background: linear-gradient(180deg, transparent 42%, rgba(184, 220, 255, 0.74) 42%);
+      box-shadow: inset 0 -1px 0 rgba(49, 90, 114, 0.22);
+    }
+
+    .wiki-annotation[data-annotation-color="green"] {
+      background: linear-gradient(180deg, transparent 42%, rgba(191, 231, 198, 0.78) 42%);
+      box-shadow: inset 0 -1px 0 rgba(68, 132, 82, 0.24);
+    }
+
+    .wiki-annotation:hover,
+    .wiki-annotation:focus {
+      outline: 2px solid rgba(241, 91, 97, 0.22);
+      outline-offset: 2px;
+    }
+
+    .wiki-annotation::after {
+      content: attr(data-annotation-note);
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 8px);
+      z-index: 8;
+      display: none;
+      width: max-content;
+      max-width: min(280px, 70vw);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fffefa;
+      box-shadow: 0 12px 30px rgba(111, 91, 82, 0.16);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.5;
+      padding: 9px 10px;
+      white-space: normal;
+    }
+
+    .wiki-annotation[data-annotation-note]:not([data-annotation-note=""]):hover::after,
+    .wiki-annotation[data-annotation-note]:not([data-annotation-note=""]):focus::after {
+      display: block;
     }
 
     .summary-grid {
@@ -2463,6 +3103,27 @@
       font-size: 0.92em;
     }
 
+    .wiki-page-content pre code,
+    .wiki-editable pre code,
+    pre code {
+      display: block;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      color: inherit;
+      padding: 0;
+      font-size: inherit;
+      line-height: 1.65;
+    }
+
+    .wiki-page-content pre code::selection,
+    .wiki-editable pre code::selection,
+    .wiki-page-content pre::selection,
+    .wiki-editable pre::selection {
+      background: rgba(255, 210, 118, 0.34);
+      color: #ffffff;
+    }
+
     footer {
       color: var(--muted);
       font-size: 12px;
@@ -2478,7 +3139,33 @@
       }
 
       header {
-        padding-bottom: 98px;
+        padding: 10px 16px 4px;
+      }
+
+      header .wrap {
+        justify-content: flex-start;
+      }
+
+      header h1 {
+        min-height: 32px;
+        font-size: 13px;
+      }
+
+      header .lead {
+        display: none;
+      }
+
+      .wrap {
+        width: min(100% - 20px, 1180px);
+      }
+
+      main {
+        padding-top: 8px;
+      }
+
+      .library-shell {
+        margin-bottom: 10px;
+        border-radius: 20px;
       }
 
       .library-app {
@@ -2494,35 +3181,207 @@
 
       .library-toolbar {
         grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 10px;
       }
 
-      .library-search-action,
-      .library-create-action {
+      .library-main-panel {
+        padding: 12px;
+      }
+
+      .library-search {
         width: 100%;
+        box-sizing: border-box;
+        min-height: 42px;
+        padding: 0 12px;
+      }
+
+      .library-search-action {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 42px;
+        padding: 10px 12px;
+      }
+
+      .library-create-action {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 42px;
+        padding: 10px 12px;
+      }
+
+      .library-shelf-switcher {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 14px;
+        padding: 10px;
+      }
+
+      .library-shelf-current {
+        min-height: 54px;
+      }
+
+      .library-shelf-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 2px 2px 6px;
+        scroll-snap-type: x proximity;
+      }
+
+      .library-shelf-tab {
+        flex: 0 0 auto;
+        max-width: 210px;
+        scroll-snap-align: start;
       }
 
       .category-row {
-        grid-template-columns: repeat(3, minmax(64px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px 8px;
+        margin: 2px 0 0;
+        overflow: visible;
+        padding: 2px 0 4px;
+      }
+
+      .category-pill {
+        min-width: 0;
+      }
+
+      .category-icon {
+        width: 48px;
+        height: 56px;
       }
 
       .wiki-dashboard {
-        grid-template-columns: 1fr;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .wiki-mobile-bar {
+        display: flex;
+        position: sticky;
+        top: 8px;
+        z-index: 30;
+      }
+
+      .wiki-mobile-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 55;
+        background: rgba(31, 24, 20, 0.28);
+      }
+
+      .wiki-app.is-mobile-sidebar-open .wiki-mobile-backdrop {
+        display: block;
       }
 
       .wiki-sidebar {
-        position: static;
+        position: fixed;
+        top: 12px;
+        bottom: 12px;
+        left: 12px;
+        z-index: 60;
+        width: min(332px, calc(100vw - 36px));
+        margin: 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        transform: translateX(calc(-100% - 24px));
+        transition: transform 180ms ease;
+      }
+
+      .wiki-app.is-mobile-sidebar-open .wiki-sidebar {
+        transform: translateX(0);
+      }
+
+      .topic-board {
+        min-width: 0;
+        border-radius: 18px;
+        padding: 12px;
+      }
+
+      .wiki-page-hero {
+        gap: 8px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+      }
+
+      .wiki-breadcrumb {
+        font-size: 11px;
+      }
+
+      .wiki-page-title-row {
+        gap: 10px;
+      }
+
+      .wiki-page-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .wiki-page-title {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+
+      .wiki-inline-meta,
+      .wiki-view-tabs,
+      .wiki-actions,
+      .wiki-block-toolbar {
+        gap: 6px;
+      }
+
+      .wiki-block-toolbar {
+        top: 78px;
+        max-height: 34vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .wiki-view-tab,
+      .wiki-subtle-button,
+      .wiki-danger-button,
+      .wiki-action-button,
+      .wiki-block-button {
+        min-height: 40px;
+      }
+
+      .wiki-utility-panel {
+        display: grid;
+        gap: 8px;
       }
 
       .wiki-tree-book-head {
-        grid-template-columns: 24px minmax(0, 1fr) 66px;
+        grid-template-columns: 24px minmax(0, 1fr) 76px;
+      }
+
+      .wiki-tree-book-head .wiki-mini-button,
+      .wiki-page-row .wiki-mini-button {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .wiki-row-actions,
+      .wiki-page-row-actions {
+        width: auto;
+        min-width: 70px;
       }
 
       .wiki-page-row {
-        grid-template-columns: 24px minmax(0, 1fr) 66px;
+        grid-template-columns: 24px minmax(0, 1fr) 72px;
       }
 
       .topic-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .topic-card {
+        flex: 0 0 min(260px, 78vw);
+        scroll-snap-align: start;
       }
 
       .wiki-form-grid,
@@ -2576,8 +3435,8 @@
 <body>
   <header>
     <div class="wrap">
-      <h1>設計と開発の本棚</h1>
-      <p class="lead">システム設計、画面表示方式、開発言語、DB、API、インフラ、テスト、開発フロー、ファイル形式、UI/UX素材を本として整理した編集可能なWikiです。本を選び、章を読み、必要に応じて自分用に追記できます。</p>
+      <h1>Kowredge Wiki</h1>
+      <p class="lead">学習メモをあとから整理して、Wiki・Tasks・Databaseとして確認できます。本棚名と切替は下のカードで管理します。</p>
     </div>
   </header>
 
@@ -5253,6 +6112,412 @@ git push origin feature/login</code></pre>
 /* 容量が大きい場合は video / WebP / Lottie も検討 */</code></pre>
       </div>
     </section>
+
+    <section id="atomic-design-ui-ux" data-book="ui-ux">
+      <div class="section-head">
+        <h2>4. Atomic Design</h2>
+        <p>Atomic Designは、UIを小さな部品から大きな画面へ組み立てて考えるための設計方法です。</p>
+      </div>
+      <div class="content">
+        <div class="callout">
+          <strong>Atomic Designは開発言語ではありません</strong>
+          <span>Brad Frostが提唱したUI設計・デザインシステムの考え方です。CSSやJavaScriptの書き方そのものではなく、UIを「部品の階層」として整理するためのメンタルモデルです。</span>
+        </div>
+
+        <h3>中学生にもわかる言い方</h3>
+        <p>Atomic Designは、画面をいきなり丸ごと作るのではなく、レゴのように小さい部品から組み立てる考え方です。ボタンや文字入力などの小さな部品を作り、それを組み合わせて検索フォーム、ヘッダー、ページ全体にしていきます。</p>
+
+        <div class="phase-flow">
+          <div class="step s1"><strong>Atoms</strong><span>ボタン、ラベル、入力欄、色、文字など最小部品</span></div>
+          <div class="step s2"><strong>Molecules</strong><span>検索ボックス、フォーム行など小さな組み合わせ</span></div>
+          <div class="step s3"><strong>Organisms</strong><span>ヘッダー、カード一覧、サイドバーなど意味を持つ大きな領域</span></div>
+          <div class="step s4"><strong>Templates</strong><span>情報の配置を決めた画面の型</span></div>
+          <div class="step s5"><strong>Pages</strong><span>実データが入った完成画面</span></div>
+        </div>
+
+        <h3>5つの階層</h3>
+        <table>
+          <thead>
+            <tr><th>階層</th><th>何か</th><th>UI例</th><th>設計で見ること</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Atoms</td><td>これ以上分けにくい最小部品</td><td>ボタン、アイコン、テキスト、入力欄、色、余白</td><td>見た目、状態、サイズ、アクセシビリティ</td></tr>
+            <tr><td>Molecules</td><td>Atomsを組み合わせた小さな機能単位</td><td>検索フォーム、入力項目、タグチップ、通知行</td><td>部品同士の関係、ラベル、エラー表示</td></tr>
+            <tr><td>Organisms</td><td>Moleculesを組み合わせた画面のまとまり</td><td>ヘッダー、商品カード一覧、コメント欄、左メニュー</td><td>情報のまとまり、操作導線、状態変化</td></tr>
+            <tr><td>Templates</td><td>データが入る前の画面レイアウト</td><td>一覧ページの型、詳細ページの型、設定画面の型</td><td>配置、優先順位、レスポンシブ、空状態</td></tr>
+            <tr><td>Pages</td><td>実際の内容が入った完成画面</td><td>ユーザーAの詳細ページ、検索結果0件のページ</td><td>実データで崩れないか、例外状態に耐えるか</td></tr>
+          </tbody>
+        </table>
+
+        <h3>このWikiで考えると</h3>
+        <table>
+          <thead>
+            <tr><th>Atomic Design</th><th>このWikiでの例</th><th>改善に使う視点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Atoms</td><td>検索ボタン、Bookアイコン、タグ、章の操作アイコン</td><td>押せることが分かるか、44px程度のタップ領域があるか</td></tr>
+            <tr><td>Molecules</td><td>検索バー、Bookカード、章行、モード切替</td><td>ラベルと操作が近いか、hover/右クリックで自然に操作できるか</td></tr>
+            <tr><td>Organisms</td><td>上部Bookナビ、左のページツリー、本文エディタ、テーブル編集UI</td><td>Page/章/Book/本棚の操作が混ざっていないか</td></tr>
+            <tr><td>Templates</td><td>学習ページ、未整理Inbox、今日の記録、UI/UXパーツ辞典ページ</td><td>同じ種類のページで構成が揃っているか</td></tr>
+            <tr><td>Pages</td><td>EMOJI、フォント、GIF、Atomic Designの各ページ</td><td>実際の本文量や表が入っても読みやすいか</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Atomic Designを使うメリット</h3>
+        <table>
+          <thead>
+            <tr><th>メリット</th><th>説明</th><th>実務で効く場面</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>一貫性が出る</td><td>同じボタン、同じ入力欄、同じカードを再利用できる</td><td>画面ごとに見た目や操作がバラバラになるのを防ぐ</td></tr>
+            <tr><td>変更に強い</td><td>小さい部品を直すと、使っている画面にも反映しやすい</td><td>ブランドカラー変更、ボタン形状変更、エラー表示統一</td></tr>
+            <tr><td>会話しやすい</td><td>「このカードはOrganism」「この入力欄はAtom」のように粒度を揃えて話せる</td><td>デザイナー、エンジニア、PMの認識合わせ</td></tr>
+            <tr><td>実装しやすい</td><td>React/Vueなどのコンポーネント設計と相性が良い</td><td>Storybook、Figmaコンポーネント、デザインシステム運用</td></tr>
+          </tbody>
+        </table>
+
+        <h3>注意点</h3>
+        <div class="check-grid">
+          <div class="check-card"><strong>分類が目的にならない</strong><span>Atoms/Moleculesの名前分けに悩みすぎず、再利用しやすい粒度で考えます。</span></div>
+          <div class="check-card"><strong>線形手順ではない</strong><span>Atomsから順番に作るだけではありません。完成画面を見ながら部品へ戻ることもあります。</span></div>
+          <div class="check-card"><strong>文脈を見る</strong><span>小さい部品だけ綺麗でも、ページ全体で使いにくければUXは良くなりません。</span></div>
+          <div class="check-card"><strong>命名を揃える</strong><span>Figma名、コード名、設計書名がずれると運用が難しくなります。</span></div>
+        </div>
+
+        <h3>設計時のチェックリスト</h3>
+        <table>
+          <thead>
+            <tr><th>観点</th><th>確認すること</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Atoms</td><td>ボタン、入力、アイコン、色、文字サイズ、余白、状態が定義されているか</td></tr>
+            <tr><td>Molecules</td><td>ラベル、入力、エラー、補足文が1セットとして使いやすいか</td></tr>
+            <tr><td>Organisms</td><td>検索、ナビ、一覧、フォームなどの大きな領域で操作が迷わないか</td></tr>
+            <tr><td>Templates</td><td>空状態、読み込み中、エラー、長文、スマホ幅の型があるか</td></tr>
+            <tr><td>Pages</td><td>実データを入れても崩れないか。例外パターンも確認したか</td></tr>
+          </tbody>
+        </table>
+
+        <h3>参考</h3>
+        <p>Atomic DesignはBrad Frostの書籍・Web版で詳しく説明されています。重要なのは、Atoms/Moleculesという名前そのものよりも、UIを「小さい部品」と「完成画面」の両方から同時に考えることです。</p>
+      </div>
+    </section>
+
+    <section id="ui-component-basics" data-book="ui">
+      <div class="section-head">
+        <h2>1. UIコンポーネントの基本</h2>
+        <p>UIコンポーネントは、画面を作るための再利用できる部品です。ボタン、入力欄、カード、モーダルなどが該当します。</p>
+      </div>
+      <div class="content">
+        <div class="callout">
+          <strong>結論</strong>
+          <span>コンポーネントは「見た目の部品」だけではなく、状態、振る舞い、アクセシビリティ、データの受け取り方まで含めて設計します。</span>
+        </div>
+
+        <div class="summary-grid">
+          <div class="step s1"><strong>再利用</strong><span>同じUIを画面ごとに作り直さず、共通部品として使います。</span></div>
+          <div class="step s2"><strong>一貫性</strong><span>色、余白、サイズ、状態を揃えて、ユーザーが迷わない画面にします。</span></div>
+          <div class="step s3"><strong>保守性</strong><span>修正箇所を部品単位に集約し、変更に強くします。</span></div>
+          <div class="step s4"><strong>品質</strong><span>アクセシビリティ、レスポンシブ、エラー状態まで含めて確認します。</span></div>
+        </div>
+
+        <h3>代表的なUIコンポーネント</h3>
+        <table>
+          <thead>
+            <tr><th>分類</th><th>例</th><th>設計で決めること</th><th>注意点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>操作</td><td>Button、Icon Button、Link、Menu</td><td>押せる範囲、優先度、状態、ラベル、アイコン</td><td>「押せる」ことが見た目で分かる必要がある</td></tr>
+            <tr><td>入力</td><td>Text Field、Select、Checkbox、Radio、Switch</td><td>ラベル、必須、入力補助、バリデーション、エラー表示</td><td>入力前、入力中、エラー、無効状態を分ける</td></tr>
+            <tr><td>表示</td><td>Card、List、Table、Badge、Avatar</td><td>情報の優先順位、密度、長文時の扱い、空状態</td><td>実データで崩れないか確認する</td></tr>
+            <tr><td>通知</td><td>Toast、Alert、Banner、Dialog</td><td>出すタイミング、閉じ方、重要度、再表示条件</td><td>重要な情報をToastだけに依存しない</td></tr>
+            <tr><td>ナビゲーション</td><td>Tabs、Breadcrumb、Sidebar、Pagination</td><td>現在位置、戻り方、階層、スマホ時の表示</td><td>ユーザーが今どこにいるか分かる必要がある</td></tr>
+            <tr><td>フィードバック</td><td>Loading、Skeleton、Empty、Error</td><td>待ち時間、失敗時、データなし、再試行導線</td><td>「何が起きているか」を短く伝える</td></tr>
+          </tbody>
+        </table>
+
+        <h3>コンポーネント仕様に入れる項目</h3>
+        <table>
+          <thead>
+            <tr><th>項目</th><th>意味</th><th>例</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>名前</td><td>Figma、コード、設計書で共通に使う名称</td><td><code>Button</code>、<code>TextField</code>、<code>Modal</code></td></tr>
+            <tr><td>目的</td><td>その部品が何を解決するか</td><td>主要アクションを実行する、単一行テキストを入力する</td></tr>
+            <tr><td>Props / Properties</td><td>外から渡す設定値</td><td><code>variant</code>、<code>size</code>、<code>disabled</code>、<code>label</code></td></tr>
+            <tr><td>Variant</td><td>用途別の見た目や種類</td><td>primary、secondary、danger、ghost</td></tr>
+            <tr><td>State</td><td>操作や状態による変化</td><td>default、hover、focus、active、disabled、loading、error</td></tr>
+            <tr><td>Slot</td><td>中に差し替えられる領域</td><td>左アイコン、右アイコン、補足テキスト、アクション領域</td></tr>
+            <tr><td>アクセシビリティ</td><td>キーボード操作、読み上げ、コントラスト</td><td>aria-label、focus ring、role、tab order</td></tr>
+            <tr><td>レスポンシブ</td><td>狭い画面でどう変わるか</td><td>横並びを縦積みにする、ラベルを省略しない</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Reactでのイメージ</h3>
+        <pre><code>type ButtonProps = {
+  variant?: "primary" | "secondary" | "danger";
+  size?: "sm" | "md" | "lg";
+  disabled?: boolean;
+  loading?: boolean;
+  children: React.ReactNode;
+};
+
+function Button({ variant = "primary", size = "md", disabled, loading, children }: ButtonProps) {
+  return (
+    &lt;button className={`button button--${variant} button--${size}`} disabled={disabled || loading}&gt;
+      {loading ? "処理中..." : children}
+    &lt;/button&gt;
+  );
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="ui-variants-states" data-book="ui">
+      <div class="section-head">
+        <h2>2. バリアント・状態・プロパティ</h2>
+        <p>バリアントは部品の種類、状態はその時の見え方、プロパティは外から渡す設定です。</p>
+      </div>
+      <div class="content">
+        <div class="callout">
+          <strong>混同しやすいポイント</strong>
+          <span>primary/secondary は「バリアント」、hover/disabled/loading は「状態」、label/size/icon は「プロパティ」と分けると設計しやすくなります。</span>
+        </div>
+
+        <h3>用語整理</h3>
+        <table>
+          <thead>
+            <tr><th>用語</th><th>意味</th><th>例</th><th>Figma/実装での扱い</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Component</td><td>再利用できるUI部品</td><td>Button、Card、TextField</td><td>Figmaコンポーネント、React/Vueコンポーネント</td></tr>
+            <tr><td>Variant</td><td>同じ部品の用途違い・見た目違い</td><td>primary、secondary、danger</td><td>Variant property、class、prop</td></tr>
+            <tr><td>State</td><td>操作や処理状況で変わる状態</td><td>hover、focus、active、disabled、loading、error</td><td>擬似クラス、state prop、デザイントークン</td></tr>
+            <tr><td>Property / Props</td><td>外から指定する値</td><td>size、label、icon、checked、open</td><td>Figma property、React props</td></tr>
+            <tr><td>Slot</td><td>中身を差し替えられる場所</td><td>icon slot、header slot、footer actions</td><td>Figma instance swap、React children</td></tr>
+            <tr><td>Instance</td><td>配置されたコンポーネントの実体</td><td>画面上の個別ボタン</td><td>元コンポーネントから派生した利用箇所</td></tr>
+            <tr><td>Override</td><td>Instance側で一部だけ変更すること</td><td>ラベルを「保存」に変える、アイコンを差し替える</td><td>変更範囲を制限しないと運用が崩れる</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Buttonの設計例</h3>
+        <table>
+          <thead>
+            <tr><th>軸</th><th>候補</th><th>用途</th><th>注意点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>variant</td><td>primary / secondary / tertiary / danger / ghost</td><td>重要度や意味を表す</td><td>種類を増やしすぎない</td></tr>
+            <tr><td>size</td><td>sm / md / lg</td><td>配置場所や画面密度に合わせる</td><td>タップ領域は小さくしすぎない</td></tr>
+            <tr><td>state</td><td>default / hover / focus / active / disabled / loading</td><td>操作の反応を伝える</td><td>focus状態はキーボード操作に必須</td></tr>
+            <tr><td>icon</td><td>none / left / right / icon only</td><td>意味補助、狭い場所の操作</td><td>icon onlyはaria-labelが必要</td></tr>
+            <tr><td>width</td><td>hug / fill / fixed</td><td>内容幅、親幅いっぱい、固定幅</td><td>長い文言や翻訳で崩れないようにする</td></tr>
+          </tbody>
+        </table>
+
+        <h3>状態設計のチェック</h3>
+        <table>
+          <thead>
+            <tr><th>状態</th><th>ユーザーに伝えること</th><th>設計ポイント</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Default</td><td>通常利用できる</td><td>最も基本の見た目</td></tr>
+            <tr><td>Hover</td><td>ここは操作できる</td><td>PC向け。スマホではhover前提にしない</td></tr>
+            <tr><td>Focus</td><td>キーボードで選択中</td><td>outlineを消さない。十分なコントラストを確保</td></tr>
+            <tr><td>Active / Pressed</td><td>押している、選択されている</td><td>Tabs、Toggle、Buttonで意味を分ける</td></tr>
+            <tr><td>Disabled</td><td>今は操作できない</td><td>理由が分かる補足やtooltipを検討</td></tr>
+            <tr><td>Loading</td><td>処理中で待つ必要がある</td><td>二重送信を防ぐ。ラベルを消しすぎない</td></tr>
+            <tr><td>Error</td><td>入力や処理に問題がある</td><td>赤だけに頼らず文言で説明する</td></tr>
+            <tr><td>Empty</td><td>まだデータがない</td><td>次に何をすればよいかを置く</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ui-design-tokens" data-book="ui">
+      <div class="section-head">
+        <h2>3. デザイントークン</h2>
+        <p>デザイントークンは、色・文字・余白・角丸などのデザイン値に名前を付けて管理する仕組みです。</p>
+      </div>
+      <div class="content">
+        <div class="callout">
+          <strong>デザイントークンとは</strong>
+          <span><code>#f15b61</code> のような値を直接ばらまくのではなく、<code>color.action.primary</code> のような名前で管理します。デザインと実装をつなぐ共通語です。</span>
+        </div>
+
+        <h3>なぜ必要か</h3>
+        <table>
+          <thead>
+            <tr><th>課題</th><th>トークンがない場合</th><th>トークンがある場合</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>色変更</td><td>画面ごとに手で探して修正する</td><td>トークン値を変えるだけで反映しやすい</td></tr>
+            <tr><td>一貫性</td><td>似た赤、似た余白が増える</td><td>使ってよい値を制限できる</td></tr>
+            <tr><td>デザインと実装</td><td>Figma名とCSS変数名がずれる</td><td>同じ名前で会話できる</td></tr>
+            <tr><td>テーマ</td><td>ライト/ダーク切替が難しい</td><td>同じ意味のトークンに別値を割り当てられる</td></tr>
+            <tr><td>品質</td><td>コントラストやサイズが画面ごとに違う</td><td>アクセシビリティ基準を組み込みやすい</td></tr>
+          </tbody>
+        </table>
+
+        <h3>トークンの種類</h3>
+        <table>
+          <thead>
+            <tr><th>分類</th><th>例</th><th>使う場所</th><th>注意点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Color</td><td><code>color.text.primary</code>、<code>color.bg.surface</code></td><td>文字、背景、線、状態色</td><td>用途名で命名する。単にred-500だけにしない</td></tr>
+            <tr><td>Typography</td><td><code>font.size.body</code>、<code>font.weight.bold</code></td><td>見出し、本文、注釈、ボタン</td><td>行間とセットで管理する</td></tr>
+            <tr><td>Spacing</td><td><code>space.4</code>、<code>space.8</code>、<code>space.16</code></td><td>余白、gap、padding</td><td>無制限に増やさずスケール化する</td></tr>
+            <tr><td>Radius</td><td><code>radius.sm</code>、<code>radius.md</code></td><td>ボタン、カード、入力欄</td><td>丸めすぎると意味がぼやける</td></tr>
+            <tr><td>Shadow / Elevation</td><td><code>shadow.card</code>、<code>shadow.modal</code></td><td>カード、メニュー、モーダル</td><td>階層を表す目的で使う</td></tr>
+            <tr><td>Size</td><td><code>size.control.md</code>、<code>size.icon.sm</code></td><td>入力欄高さ、アイコン、タップ領域</td><td>44px前後のタップ領域を意識</td></tr>
+            <tr><td>Motion</td><td><code>motion.duration.fast</code>、<code>motion.ease.out</code></td><td>hover、modal、drawer、toast</td><td>動きすぎない。Reduced motion対応も考える</td></tr>
+            <tr><td>Z-index / Layer</td><td><code>layer.modal</code>、<code>layer.toast</code></td><td>重なり順</td><td>数値を場当たり的に増やさない</td></tr>
+          </tbody>
+        </table>
+
+        <h3>命名の考え方</h3>
+        <table>
+          <thead>
+            <tr><th>種類</th><th>例</th><th>メリット</th><th>注意点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Primitive token</td><td><code>blue.500</code>、<code>gray.900</code></td><td>基本色や基本値を管理しやすい</td><td>画面では直接使いすぎない</td></tr>
+            <tr><td>Semantic token</td><td><code>color.text.primary</code>、<code>color.action.danger</code></td><td>用途が分かる。テーマ変更に強い</td><td>意味の粒度を揃える</td></tr>
+            <tr><td>Component token</td><td><code>button.primary.bg</code>、<code>card.radius</code></td><td>部品ごとの微調整ができる</td><td>増えすぎると管理が重い</td></tr>
+          </tbody>
+        </table>
+
+        <h3>CSSでのイメージ</h3>
+        <pre><code>:root {
+  --color-text-primary: #4f403a;
+  --color-action-primary: #f15b61;
+  --space-4: 4px;
+  --space-8: 8px;
+  --radius-md: 12px;
+}
+
+.button-primary {
+  background: var(--color-action-primary);
+  color: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-16);
+}</code></pre>
+
+        <h3>設計でのチェックリスト</h3>
+        <table>
+          <thead>
+            <tr><th>観点</th><th>確認すること</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Figma連携</td><td>Figma variables / styles とコード上のCSS変数やテーマ名が対応しているか</td></tr>
+            <tr><td>テーマ</td><td>ライト、ダーク、ブランド違いで同じsemantic tokenを使えるか</td></tr>
+            <tr><td>アクセシビリティ</td><td>文字色と背景色のコントラストが基準を満たすか</td></tr>
+            <tr><td>運用</td><td>誰が追加・変更を承認するか。古いtokenをどう廃止するか</td></tr>
+            <tr><td>実装</td><td>CSS、React Native、iOS、Androidなど複数環境へ変換できるか</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ui-patterns-slots-composition" data-book="ui">
+      <div class="section-head">
+        <h2>4. パターン・スロット・合成</h2>
+        <p>コンポーネントとバリアントだけでは足りないため、パターン、スロット、合成、テンプレートも整理します。</p>
+      </div>
+      <div class="content">
+        <h3>コンポーネント周辺でまとめるべき概念</h3>
+        <table>
+          <thead>
+            <tr><th>概念</th><th>意味</th><th>例</th><th>なぜ必要か</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pattern</td><td>複数コンポーネントを使った定番の解決方法</td><td>検索結果、フォーム入力、確認ダイアログ</td><td>画面ごとの迷いを減らし、UXを揃える</td></tr>
+            <tr><td>Slot</td><td>部品内で差し替え可能な領域</td><td>Cardのheader/actions、ButtonのleftIcon</td><td>バリアントを増やしすぎず柔軟にする</td></tr>
+            <tr><td>Composition</td><td>小さい部品を組み合わせて大きなUIを作ること</td><td>Input + Label + Error = FormField</td><td>再利用性と文脈対応を両立する</td></tr>
+            <tr><td>Template</td><td>情報配置の型</td><td>一覧ページ、詳細ページ、設定ページ</td><td>ページ単位の一貫性を作る</td></tr>
+            <tr><td>Layout primitive</td><td>配置だけを担当する部品</td><td>Stack、Grid、Container、Spacer</td><td>余白と整列を統一する</td></tr>
+            <tr><td>Content model</td><td>UIに入る情報の構造</td><td>title、description、image、actions</td><td>長文、未設定、翻訳時に崩れないようにする</td></tr>
+            <tr><td>Interaction pattern</td><td>操作の流れや反応の型</td><td>右クリックメニュー、ドラッグ、インライン編集</td><td>直感的に使える操作を増やす</td></tr>
+            <tr><td>Accessibility pattern</td><td>支援技術やキーボード操作を含む型</td><td>Dialog、Menu、Combobox、Tabs</td><td>見た目だけでなく操作可能性を保証する</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Slot設計の例</h3>
+        <table>
+          <thead>
+            <tr><th>コンポーネント</th><th>Slot</th><th>入るもの</th><th>注意点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Button</td><td>leftIcon / rightIcon / children</td><td>アイコン、ラベル</td><td>icon onlyでは読み上げラベルが必要</td></tr>
+            <tr><td>Card</td><td>media / header / body / actions</td><td>画像、タイトル、本文、ボタン</td><td>カード全体をリンクにするか、ボタンを分けるか決める</td></tr>
+            <tr><td>Modal</td><td>title / content / footer</td><td>見出し、説明、操作ボタン</td><td>閉じ方、Esc、フォーカストラップを考える</td></tr>
+            <tr><td>Table</td><td>toolbar / header / row / empty</td><td>検索、列名、行、空状態</td><td>横スクロール、ソート、行操作を整理する</td></tr>
+            <tr><td>Page</td><td>hero / main / aside / footer</td><td>ページ見出し、本文、補助情報</td><td>スマホではasideを下やdrawerに逃がす</td></tr>
+          </tbody>
+        </table>
+
+        <h3>パターン化するとよいUI</h3>
+        <div class="check-grid">
+          <div class="check-card"><strong>フォーム</strong><span>ラベル、必須、補足、エラー、保存ボタン、キャンセルの配置を統一します。</span></div>
+          <div class="check-card"><strong>一覧</strong><span>検索、フィルター、並び替え、空状態、ページングをセットで考えます。</span></div>
+          <div class="check-card"><strong>詳細</strong><span>タイトル、メタ情報、本文、関連情報、編集導線の位置を揃えます。</span></div>
+          <div class="check-card"><strong>確認操作</strong><span>削除、公開、送信など危険操作は確認・取り消しを設計します。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ui-component-governance" data-book="ui">
+      <div class="section-head">
+        <h2>5. コンポーネント運用とレビュー</h2>
+        <p>コンポーネントは作って終わりではなく、追加・変更・廃止のルールが必要です。</p>
+      </div>
+      <div class="content">
+        <h3>運用で決めること</h3>
+        <table>
+          <thead>
+            <tr><th>項目</th><th>決めること</th><th>理由</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>命名規則</td><td>Figma名、コード名、ドキュメント名を揃える</td><td>探しやすく、会話しやすくするため</td></tr>
+            <tr><td>追加基準</td><td>既存部品で代用できない時だけ新規追加する</td><td>似た部品の乱立を防ぐため</td></tr>
+            <tr><td>変更ルール</td><td>破壊的変更、軽微な変更、デザイン調整を分ける</td><td>既存画面への影響を管理するため</td></tr>
+            <tr><td>レビュー観点</td><td>見た目、状態、アクセシビリティ、レスポンシブ、実装可能性</td><td>部品品質を一定以上に保つため</td></tr>
+            <tr><td>ドキュメント</td><td>使い方、禁止例、props、variants、statesを書く</td><td>使う人が迷わないため</td></tr>
+            <tr><td>廃止</td><td>非推奨部品、移行先、削除時期を明記する</td><td>古いUIが残り続けるのを防ぐため</td></tr>
+          </tbody>
+        </table>
+
+        <h3>コンポーネントレビュー表</h3>
+        <table>
+          <thead>
+            <tr><th>観点</th><th>チェック内容</th><th>OK例</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>目的</td><td>何のための部品か一言で説明できるか</td><td>主要アクションを実行するButton</td></tr>
+            <tr><td>再利用性</td><td>1画面専用になりすぎていないか</td><td>複数画面で同じpropsで使える</td></tr>
+            <tr><td>Variant</td><td>用途違いが整理されているか</td><td>primary / secondary / danger の3種に絞る</td></tr>
+            <tr><td>State</td><td>hover、focus、disabled、loading、errorがあるか</td><td>操作状態が視覚的に分かる</td></tr>
+            <tr><td>Responsive</td><td>狭い幅や長い文言でも崩れないか</td><td>折り返し、横スクロール、省略のルールがある</td></tr>
+            <tr><td>Accessibility</td><td>キーボード、読み上げ、コントラストに対応しているか</td><td>focus visible、aria-label、十分なコントラスト</td></tr>
+            <tr><td>Token</td><td>色や余白を直値ではなくtokenで使っているか</td><td><code>var(--color-action-primary)</code> を使う</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Figmaと実装の対応</h3>
+        <table>
+          <thead>
+            <tr><th>Figma</th><th>実装</th><th>対応させる理由</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Component</td><td>React/Vue Component</td><td>デザインとコードの単位を揃える</td></tr>
+            <tr><td>Variant property</td><td><code>variant</code> prop</td><td>primary/secondaryなどを同じ言葉で扱う</td></tr>
+            <tr><td>Boolean property</td><td><code>disabled</code>、<code>loading</code> prop</td><td>状態のON/OFFを揃える</td></tr>
+            <tr><td>Instance swap</td><td><code>icon</code> prop / slot</td><td>アイコン差し替えを安全にする</td></tr>
+            <tr><td>Variables</td><td>Design tokens / CSS variables</td><td>色・余白・文字を同じ値で管理する</td></tr>
+            <tr><td>Auto layout</td><td>Flex / Grid</td><td>余白と並びの実装を再現しやすくする</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -5367,8 +6632,8 @@ git push origin feature/login</code></pre>
           label: "Book 10",
           icon: "🧸",
           title: "UI/UXパーツ辞典",
-          copy: "絵文字、デコ文字、ステッカー、マイクロコピーなど、画面体験を支える表現素材を整理します。",
-          meta: "3 chapters",
+          copy: "絵文字、フォント、GIF、Atomic Designなど、画面体験を支える表現素材とUI部品設計を整理します。",
+          meta: "4 chapters",
           shortTitle: "UX",
           tone: "#d8899e",
           accent: "linear-gradient(135deg, #d8899e, #8e6fa8)"
@@ -5883,6 +7148,7 @@ git push origin feature/login</code></pre>
         ["絵文字", /EMOJI|emoji|絵文字|デコ文字|Decomoji|ステッカー|Unicode|RGI|CLDR|Genmoji|Emoji Kitchen|Slack|Discord/i],
         ["フォント", /フォント|font|typography|文字|書体|ゴシック|明朝|等幅|line-height|font-family/i],
         ["GIF", /GIF|gif|WebP|APNG|MP4|Lottie|アニメーション|スタンプ|ループ/i],
+        ["Atomic Design", /Atomic Design|Atomic|Atoms|Molecules|Organisms|Templates|Pages|コンポーネント|デザインシステム|部品設計|UI部品/i],
         ["インフラ", /インフラ|DNS|CDN|サーバー|監視|ログ|運用/],
         ["テスト", /テスト|品質|正常系|異常系|境界値|UAT/],
         ["開発", /Git|CI|CD|リリース|ブランチ|PR|開発/],
@@ -6118,8 +7384,16 @@ git push origin feature/login</code></pre>
           id: "shelf-design-dev",
           icon: "W",
           title: "設計と開発の本棚",
-          description: "設計、表示方式、開発技術を整理するローカル編集Wikiです。"
+          description: "学習メモをあとから整理して確認できるローカル編集Wikiです。"
         };
+        const uiUxShelf = {
+          id: "shelf-ui-ux",
+          icon: "UX",
+          title: "UI/UX",
+          description: "絵文字、フォント、GIF、Atomic Designなど、画面体験を支えるパーツとUI部品設計を整理する本棚です。"
+        };
+        const defaultShelves = [{ ...defaultShelf }, { ...uiUxShelf }];
+        const defaultShelfIdForBook = book => ["ui-ux", "ui"].includes(book.id) ? uiUxShelf.id : defaultShelf.id;
         const defaultBooks = [
           { id: "system", label: "Book 01", icon: "📚", title: "システム設計の基本", copy: "要件定義から設計、テストまで。いま作成している設計ドキュメントガイドです。", shortTitle: "設計", tone: "#315a72", accent: "linear-gradient(135deg, #315a72, #24475b)" },
           { id: "display", label: "Book 02", icon: "▶", title: "画面表示方式の基礎", copy: "静的サイト、動的サイト、Native、WebView、Hybridの違いを整理します。", shortTitle: "表示", tone: "#f15b61", accent: "linear-gradient(135deg, #f15b61, #d64e5a)" },
@@ -6130,8 +7404,12 @@ git push origin feature/login</code></pre>
           { id: "quality", label: "Book 07", icon: "★", title: "テスト・品質保証", copy: "単体、結合、E2E、UAT、テスト観点、要件との紐付けを整理します。", shortTitle: "品質", tone: "#f15b61", accent: "linear-gradient(135deg, #f15b61, #bd3e4b)" },
           { id: "dev-flow", label: "Book 08", icon: "🖌", title: "開発フロー・Git・CI/CD", copy: "開発役割、Git、PR、CI/CD、リリース、ロールバックを整理します。", shortTitle: "開発", tone: "#5fa66c", accent: "linear-gradient(135deg, #5fa66c, #315a72)" },
           { id: "file-format", label: "Book 09", icon: "📄", title: "拡張子とファイル形式", copy: ".txt、JSON、Office、画像、動画、ログ、証明書など、開発・設計でよく見るファイル形式を整理します。", shortTitle: "拡張子", tone: "#8f9fb4", accent: "linear-gradient(135deg, #8f9fb4, #315a72)" },
-          { id: "ui-ux", label: "Book 10", icon: "🧸", title: "UI/UXパーツ辞典", copy: "絵文字、デコ文字、ステッカー、マイクロコピーなど、画面体験を支える表現素材を整理します。", shortTitle: "UX", tone: "#d8899e", accent: "linear-gradient(135deg, #d8899e, #8e6fa8)" },
-          { id: "learning-journal", label: "Book 11", icon: "📝", title: "学習ジャーナル", copy: "日々の気づき、学習メモ、疑問を未整理のまま残し、あとから設計資料へ育てます。", shortTitle: "記録", tone: "#6f9f83", accent: "linear-gradient(135deg, #6f9f83, #315a72)" }
+          { id: "ui-ux", label: "Book 10", icon: "🧸", title: "UI/UXパーツ辞典", copy: "絵文字、フォント、GIF、Atomic Designなど、画面体験を支える表現素材とUI部品設計を整理します。", shortTitle: "UX", tone: "#d8899e", accent: "linear-gradient(135deg, #d8899e, #8e6fa8)" },
+          { id: "ui", label: "Book 11", icon: "▣", title: "UI", copy: "コンポーネント、バリアント、状態、プロパティ、デザイントークン、運用ルールを整理します。", shortTitle: "UI", tone: "#6fa7c8", accent: "linear-gradient(135deg, #6fa7c8, #315a72)" },
+          { id: "learning-journal", label: "Book 12", icon: "📝", title: "学習ジャーナル", copy: "日々の気づき、学習メモ、疑問を未整理のまま残し、あとから学習サイトとして確認できる形へ整理します。", shortTitle: "記録", tone: "#6f9f83", accent: "linear-gradient(135deg, #6f9f83, #315a72)" },
+          { id: "shared-database", label: "Book 13", icon: "▦", title: "共有Database", copy: "Wiki、Journal、Tasks、Dashboardで同じrecordを参照する共通DBです。", shortTitle: "共有DB", tone: "#7b6ea6", accent: "linear-gradient(135deg, #7b6ea6, #315a72)" },
+          { id: "tasks", label: "Book 14", icon: "✓", title: "Tasks", copy: "共有Database内で task type を持つrecordだけをタスクとして管理します。", shortTitle: "Tasks", tone: "#f15b61", accent: "linear-gradient(135deg, #f15b61, #bd3e4b)" },
+          { id: "dashboard", label: "Book 15", icon: "◫", title: "Dashboard", copy: "共有Databaseのメモ、疑問、タスク、用語を集計して学習状況を俯瞰します。", shortTitle: "Dash", tone: "#315a72", accent: "linear-gradient(135deg, #315a72, #1f3849)" }
         ];
         const keywordTags = [
           ["API", /API|HTTP|JSON|CRUD|Create|Read|Update|Delete|エンドポイント|レスポンス|リクエスト/i],
@@ -6142,6 +7420,9 @@ git push origin feature/login</code></pre>
           ["絵文字", /EMOJI|emoji|絵文字|デコ文字|Decomoji|ステッカー|Unicode|RGI|CLDR|Genmoji|Emoji Kitchen|Slack|Discord/i],
           ["フォント", /フォント|font|typography|文字|書体|ゴシック|明朝|等幅|line-height|font-family/i],
           ["GIF", /GIF|gif|WebP|APNG|MP4|Lottie|アニメーション|スタンプ|ループ/i],
+          ["Atomic Design", /Atomic Design|Atomic|Atoms|Molecules|Organisms|Templates|Pages|コンポーネント|デザインシステム|部品設計|UI部品/i],
+          ["コンポーネント", /コンポーネント|Component|UI部品|Props|Properties|Slot|Instance|Override|Composition|Pattern|Layout primitive/i],
+          ["デザイントークン", /デザイントークン|Design Token|token|variables|semantic token|primitive token|component token|CSS変数/i],
           ["インフラ", /インフラ|DNS|CDN|サーバー|監視|ログ|運用/i],
           ["テスト", /テスト|品質|正常系|異常系|境界値|UAT/i],
           ["開発", /Git|CI|CD|リリース|ブランチ|PR|開発/i],
@@ -6156,6 +7437,183 @@ git push origin feature/login</code></pre>
           .replace(/>/g, "&gt;")
           .replace(/"/g, "&quot;")
           .replace(/'/g, "&#39;");
+        const templateHeaders = ["ドキュメント", "基本フォーマット", "主な項目", "入力元ドキュメント", "出力先 / 参照先ドキュメント"];
+        const aliasToTemplate = new Map([
+          ["ユースケース図・ユースケース記述", "ユースケース図 / 記述"]
+        ]);
+        const fieldList = value => normalize(value)
+          .split("、")
+          .map(item => item.trim())
+          .filter(Boolean);
+        const renderTableVisual = (name, fields) => {
+          const columns = fields.slice(0, 4);
+          while (columns.length < 4) columns.push(["ID", "名称", "内容", "備考"][columns.length]);
+          return `
+            <table class="visual-table" aria-label="${escapeHtml(name)}の表イメージ">
+              <thead><tr>${columns.map(column => `<th>${escapeHtml(column)}</th>`).join("")}</tr></thead>
+              <tbody>
+                <tr>${columns.map((_, index) => `<td>${index === 0 ? "REQ-001" : "..."}</td>`).join("")}</tr>
+                <tr>${columns.map((_, index) => `<td>${index === 0 ? "REQ-002" : "..."}</td>`).join("")}</tr>
+              </tbody>
+            </table>
+          `;
+        };
+        const renderDocVisual = (name, fields) => `
+          <div aria-label="${escapeHtml(name)}の文書イメージ">
+            <div class="visual-doc-line short"></div>
+            <div class="visual-doc-line medium"></div>
+            <div class="visual-doc-line"></div>
+            <table class="visual-table">
+              <tbody>
+                ${fields.slice(0, 3).map(field => `<tr><th>${escapeHtml(field)}</th><td>...</td></tr>`).join("")}
+              </tbody>
+            </table>
+          </div>
+        `;
+        const renderFlowVisual = name => `
+          <div class="visual-flow" aria-label="${escapeHtml(name)}のフローイメージ">
+            <div class="visual-box">開始</div>
+            <div class="visual-arrow">→</div>
+            <div class="visual-box">確認 / 判断</div>
+            <div class="visual-arrow">→</div>
+            <div class="visual-box">完了</div>
+          </div>
+        `;
+        const renderSequenceVisual = name => `
+          <div class="visual-sequence" aria-label="${escapeHtml(name)}の時系列イメージ">
+            <div class="visual-lane">利用者</div>
+            <div class="visual-lane">画面</div>
+            <div class="visual-lane">API</div>
+            <div class="visual-lane">DB</div>
+            <div class="visual-message">1. request</div>
+            <div class="visual-message">2. response</div>
+          </div>
+        `;
+        const renderErVisual = name => `
+          <div class="visual-er" aria-label="${escapeHtml(name)}のER図イメージ">
+            <div class="visual-entity"><strong>users</strong><span>PK user_id</span><span>name</span></div>
+            <div class="visual-arrow">1 : N</div>
+            <div class="visual-entity"><strong>applications</strong><span>PK application_id</span><span>FK user_id</span></div>
+          </div>
+        `;
+        const renderWireVisual = name => `
+          <div class="visual-wire" aria-label="${escapeHtml(name)}の画面イメージ">
+            <div class="visual-phone">
+              <div class="visual-phone-row"></div>
+              <div class="visual-phone-row hero"></div>
+              <div class="visual-phone-row"></div>
+              <div class="visual-phone-row"></div>
+              <div class="visual-phone-row button"></div>
+            </div>
+            <div class="visual-note">ヘッダー、本文、入力欄、主要ボタンの配置を画面として確認します。</div>
+          </div>
+        `;
+        const renderComponentVisual = name => `
+          <div class="visual-components" aria-label="${escapeHtml(name)}の部品一覧イメージ">
+            <div class="visual-component demo-button">Button</div>
+            <div class="visual-component demo-input">Input value</div>
+            <div class="visual-component demo-modal">Modal<br>OK / Cancel</div>
+            <div class="visual-component">Error</div>
+            <div class="visual-component">Loading</div>
+            <div class="visual-component">Empty</div>
+          </div>
+        `;
+        const renderInfraVisual = name => `
+          <div class="visual-infra" aria-label="${escapeHtml(name)}の構成イメージ">
+            <div class="visual-node">App</div>
+            <div class="visual-arrow">→</div>
+            <div class="visual-node">API</div>
+            <div class="visual-node">DB</div>
+          </div>
+        `;
+        const renderFormatVisual = (name, format, fieldText) => {
+          const fields = fieldList(fieldText);
+          let visual;
+          if (/画面|ワイヤー|WF|UIデザイン/.test(name) && !/一覧|遷移/.test(name)) {
+            visual = renderWireVisual(name);
+          } else if (/UIコンポーネント/.test(name)) {
+            visual = renderComponentVisual(name);
+          } else if (/シーケンス/.test(name)) {
+            visual = renderSequenceVisual(name);
+          } else if (/ER図|クラス図/.test(name)) {
+            visual = renderErVisual(name);
+          } else if (/業務フロー|ユースケース|画面遷移|データフロー/.test(name)) {
+            visual = renderFlowVisual(name);
+          } else if (/構成図|アーキテクチャ|配置図|インフラ|コンポーネント図/.test(name)) {
+            visual = renderInfraVisual(name);
+          } else if (/一覧|表|定義|API|テスト/.test(format + name)) {
+            visual = renderTableVisual(name, fields);
+          } else {
+            visual = renderDocVisual(name, fields);
+          }
+          return `
+            <div class="format-visual">
+              <div class="format-visual-bar">
+                <span>${escapeHtml(name)}</span>
+                <span class="format-visual-chip">FORMAT</span>
+              </div>
+              <div class="format-visual-canvas">${visual}</div>
+            </div>
+          `;
+        };
+        const requirementTermExplanations = new Map([
+          ["業務要件", "業務として何を実現したいか。例: 会員登録できる、申込状況を確認できる、承認作業を行える。"],
+          ["機能要件", "システムが持つべき具体的な機能。例: ログイン、検索、登録、通知、CSV出力。"],
+          ["非機能要件", "機能そのものではなく品質に関する条件。例: 表示速度、セキュリティ、可用性、保守性、アクセシビリティ。"],
+          ["前提", "設計や開発を進めるうえで正しいものとして置く条件。例: 既存IDを利用する、外部APIが利用可能である。"],
+          ["制約", "守らなければならない制限。例: 期限、予算、利用技術、法令、既存システム仕様。"]
+        ]);
+        const renderTermExplanations = (documentName, itemText) => {
+          if (documentName !== "要件定義書") return "";
+          const terms = fieldList(itemText).filter(term => requirementTermExplanations.has(term));
+          if (!terms.length) return "";
+          return `
+            <div class="term-explainer" aria-label="要件定義書の主な項目の説明">
+              ${terms.map(term => `
+                <div class="term-row">
+                  <span class="term-name">${escapeHtml(term)}</span>
+                  <span class="term-description">${escapeHtml(requirementTermExplanations.get(term))}</span>
+                </div>
+              `).join("")}
+            </div>
+          `;
+        };
+        const templateByName = (() => {
+          const templateSection = sourceSections.find(section => normalize(section.querySelector("h2")?.textContent).includes("ドキュメント別テンプレート"));
+          const rows = Array.from(templateSection?.querySelectorAll(".content > table:first-of-type tbody tr") || []);
+          const map = new Map();
+          rows.forEach(row => {
+            const values = Array.from(row.children).map(cell => normalize(cell.textContent));
+            if (values[0]) map.set(values[0], values);
+          });
+          return map;
+        })();
+        const renderTemplatePreview = values => `
+          <aside class="template-preview is-visible" data-wiki-template-preview aria-live="polite">
+            <div class="template-preview-head">
+              <div>
+                <h3 class="template-preview-title">${escapeHtml(values[0] || "テンプレート / フォーマット")}</h3>
+                <p class="template-preview-subtitle">このドキュメントの基本形と、前後のドキュメントとのつながりです。</p>
+              </div>
+              <button type="button" class="template-preview-close" data-action="close-template-preview">閉じる</button>
+            </div>
+            <div class="template-preview-body">
+              ${values.map((value, index) => {
+                const isFormat = index === 1;
+                const isMainItems = index === 2;
+                const displayValue = isFormat
+                  ? renderFormatVisual(values[0], value, values[2])
+                  : `${escapeHtml(value)}${isMainItems ? renderTermExplanations(values[0], value) : ""}`;
+                return `
+                  <div class="template-preview-item${isFormat ? " is-format" : ""}">
+                    <span class="template-preview-label">${templateHeaders[index] || "項目"}</span>
+                    <span class="template-preview-value">${displayValue}</span>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </aside>
+        `;
         const slug = value => String(value || "page")
           .toLowerCase()
           .replace(/[^a-z0-9\u3040-\u30ff\u3400-\u9fff]+/g, "-")
@@ -6186,6 +7644,110 @@ git push origin feature/login</code></pre>
           synced: () => `<div class=\"wiki-synced-block\" data-sync-id=\"sync-${Date.now().toString(36)}\"><span class=\"wiki-synced-label\">SYNCED BLOCK</span><p>このブロックと同じIDのブロックは保存時に同期されます。</p></div>`,
           backlink: () => `<p>[[${activePage()?.title || "リンクしたいページ名"}]]</p>`
         };
+        const blockPreviewDefinitions = {
+          paragraph: {
+            title: "Text",
+            kind: "文章",
+            desc: "ふつうの本文を追加します。メモ、説明、考えたことを書く基本ブロックです。",
+            sample: `<p>ここに本文を書きます。あとから見出しやリストへ変換できます。</p>`
+          },
+          heading: {
+            title: "Heading",
+            kind: "見出し",
+            desc: "ページ内の区切りを作ります。長いメモを読みやすい章立てにしたい時に使います。",
+            sample: `<h4>新しい見出し</h4><p>この下に関連する内容をまとめます。</p>`
+          },
+          todo: {
+            title: "ToDo",
+            kind: "チェック",
+            desc: "確認すること、あとで調べること、作業タスクをチェック付きで残します。",
+            sample: `<label class="wiki-todo-block"><input type="checkbox"> 次に確認すること</label>`
+          },
+          callout: {
+            title: "Callout",
+            kind: "強調メモ",
+            desc: "重要な注意点や補足を目立たせます。設計レビューの観点にも向いています。",
+            sample: `<div class="preview-callout"><strong>重要</strong><p>ここは先に合意しておくポイントです。</p></div>`
+          },
+          note: {
+            title: "Memo",
+            kind: "未整理メモ",
+            desc: "気づきや疑問を一旦置く場所です。右クリックで章・TODO・DBなどに育てられます。",
+            sample: `<div class="preview-note"><strong>未整理</strong><p>あとで整理する学習メモ。</p></div>`
+          },
+          code: {
+            title: "Code",
+            kind: "コード",
+            desc: "コード例やコマンドを崩れない形で表示します。",
+            sample: `<div class="preview-code">const message = "hello";<br>console.log(message);</div>`
+          },
+          math: {
+            title: "Math",
+            kind: "数式",
+            desc: "計算式やルール式を本文から分けて表示します。",
+            sample: `<div class="preview-math">E = mc^2</div>`
+          },
+          table: {
+            title: "Table",
+            kind: "表",
+            desc: "小さな比較表や整理表を作ります。編集モードでは行・列の追加もできます。",
+            sample: `<table class="preview-table"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>例</td><td>説明</td></tr></tbody></table>`
+          },
+          database: {
+            title: "Database",
+            kind: "DB表",
+            desc: "Notion風に状態や担当者つきの一覧を作ります。タスク・用語・調査ログに向いています。",
+            sample: `<div class="preview-card-grid"><div class="preview-db-row"><span>API仕様確認</span><span class="preview-pill">Todo</span></div><div class="preview-db-row"><span>DB用語整理</span><span class="preview-pill">Doing</span></div></div>`
+          },
+          dbProperties: {
+            title: "DB Props",
+            kind: "DB列定義",
+            desc: "DBの列タイプ例つきテーブルを作ります。Status、Date、Personなどを整理します。",
+            sample: `<table class="preview-table"><thead><tr><th>Name</th><th>Status</th><th>Due</th></tr></thead><tbody><tr><td>設計レビュー</td><td>Doing</td><td>Today</td></tr></tbody></table>`
+          },
+          synced: {
+            title: "Synced",
+            kind: "同期ブロック",
+            desc: "同じIDのブロックを同期するための枠です。共通メモや注意書きの再利用に使います。",
+            sample: `<div class="preview-callout"><strong>SYNCED</strong><p>共通の注意書きを再利用します。</p></div>`
+          },
+          backlink: {
+            title: "Backlink",
+            kind: "ページリンク",
+            desc: "[[ページ名]] の形で、別ページへの参照を作ります。関連知識をつなぐ時に使います。",
+            sample: `<p>[[API仕様書]] に関連づける</p>`
+          },
+          attachFile: {
+            title: "File/Image",
+            kind: "添付",
+            desc: "画像、動画、音声、ファイルを本文に添付します。画面キャプチャや参考資料に使います。",
+            sample: `<div class="preview-note"><strong>📎 screenshot.png</strong><p>画像や資料をページ内に置けます。</p></div>`
+          },
+          convertHeading: {
+            title: "選択→見出し",
+            kind: "変換",
+            desc: "選択した文章を見出しに変換します。あとから構造化したい時に使います。",
+            sample: `<h4>選択した文章</h4><p>本文から章タイトルへ。</p>`
+          },
+          convertList: {
+            title: "選択→List",
+            kind: "変換",
+            desc: "選択した文章をリスト化します。箇条書きで整理したい時に使います。",
+            sample: `<ul><li>調べること</li><li>確認すること</li></ul>`
+          },
+          convertCode: {
+            title: "選択→Code",
+            kind: "変換",
+            desc: "選択した文章をコードブロックに変換します。コマンドやコード片に使います。",
+            sample: `<div class="preview-code">npm run dev</div>`
+          },
+          annotateSelection: {
+            title: "選択→Annotation",
+            kind: "注釈",
+            desc: "選択した文章にハイライトとメモを付けます。あとで重要箇所を見返せます。",
+            sample: `<p><span class="preview-annotation">ここが重要</span> という注釈を残します。</p>`
+          }
+        };
         const buildInitialPages = () => sourceSections.map((section, index) => ({
           id: section.id || `page-${index + 1}`,
           bookId: section.dataset.book || "system",
@@ -6196,11 +7758,51 @@ git push origin feature/login</code></pre>
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         }));
+        const recordTypeOptions = ["memo", "wiki", "journal", "task", "term", "question", "db"];
+        const normalizeTypes = value => {
+          const source = Array.isArray(value) ? value : value ? [value] : ["memo"];
+          const unique = [...new Set(source.map(item => normalize(item)).filter(Boolean))];
+          return unique.length ? unique : ["memo"];
+        };
+        const buildInitialRecords = () => {
+          const now = new Date().toISOString();
+          return [
+            {
+              id: "record-sample-memo",
+              types: ["memo", "question"],
+              title: "未整理メモの例",
+              body: "最初は分類せずに書き、あとからBook・章・タスク・用語へ育てられます。",
+              status: "未整理",
+              tags: ["未整理", "学習メモ"],
+              bookId: "learning-journal",
+              pageId: "learning-inbox",
+              dueDate: "",
+              priority: "Middle",
+              createdAt: now,
+              updatedAt: now
+            },
+            {
+              id: "record-sample-task",
+              types: ["memo", "task"],
+              title: "API仕様を確認する",
+              body: "同じrecordに memo と task を持たせると、DatabaseとTasksの両方に表示されます。",
+              status: "Todo",
+              tags: ["API", "確認"],
+              bookId: "api-security",
+              pageId: "",
+              dueDate: "",
+              priority: "High",
+              createdAt: now,
+              updatedAt: now
+            }
+          ];
+        };
         const initialState = () => ({
-          version: 1,
-          shelves: [{ ...defaultShelf }],
-          books: defaultBooks.map((book, index) => ({ ...book, shelfId: defaultShelf.id, label: `Book ${String(index + 1).padStart(2, "0")}` })),
+          version: 2,
+          shelves: defaultShelves.map(shelf => ({ ...shelf })),
+          books: defaultBooks.map((book, index) => ({ ...book, shelfId: defaultShelfIdForBook(book), label: `Book ${String(index + 1).padStart(2, "0")}` })),
           pages: buildInitialPages(),
+          records: buildInitialRecords(),
           activeShelfId: defaultShelf.id,
           activeBookId: "system",
           activePageId: null,
@@ -6236,17 +7838,45 @@ git push origin feature/login</code></pre>
           state.activePageId = state.pages.find(page => page.bookId === state.activeBookId)?.id || state.pages[0]?.id || null;
         }
         state.shelves = Array.isArray(state.shelves) && state.shelves.length ? state.shelves : [{ ...defaultShelf }];
-        state.activeShelfId = state.shelves.some(shelf => shelf.id === state.activeShelfId) ? state.activeShelfId : state.shelves[0].id;
-        state.books.forEach(book => {
-          book.shelfId = book.shelfId || state.activeShelfId;
+        defaultShelves.forEach(defaultItem => {
+          if (state.shelves.some(shelf => shelf.id === defaultItem.id)) return;
+          state.shelves.push({ ...defaultItem });
         });
+        state.activeShelfId = state.shelves.some(shelf => shelf.id === state.activeShelfId) ? state.activeShelfId : state.shelves[0].id;
+        let migratedShelves = false;
+        state.books.forEach(book => {
+          const nextShelfId = book.id === "ui-ux" ? uiUxShelf.id : book.shelfId || defaultShelf.id;
+          if (book.shelfId !== nextShelfId) migratedShelves = true;
+          book.shelfId = nextShelfId;
+        });
+        let refreshedLearningCopy = false;
+        const designShelf = state.shelves.find(shelf => shelf.id === defaultShelf.id);
+        if (designShelf?.description === "設計、表示方式、開発技術を整理するローカル編集Wikiです。") {
+          designShelf.description = defaultShelf.description;
+          refreshedLearningCopy = true;
+        }
+        const journalBookState = state.books.find(book => book.id === "learning-journal");
+        if (journalBookState?.copy === "日々の気づき、学習メモ、疑問を未整理のまま残し、あとから設計資料へ育てます。") {
+          journalBookState.copy = defaultBooks.find(book => book.id === "learning-journal")?.copy || journalBookState.copy;
+          refreshedLearningCopy = true;
+        }
+        const uiUxBookState = state.books.find(book => book.id === "ui-ux");
+        if (uiUxBookState?.copy === "絵文字、デコ文字、ステッカー、マイクロコピーなど、画面体験を支える表現素材を整理します。") {
+          uiUxBookState.copy = defaultBooks.find(book => book.id === "ui-ux")?.copy || uiUxBookState.copy;
+          refreshedLearningCopy = true;
+        }
+        const uiUxShelfState = state.shelves.find(shelf => shelf.id === uiUxShelf.id);
+        if (uiUxShelfState?.description === "絵文字、フォント、GIFなど、画面体験を支えるパーツを整理する本棚です。") {
+          uiUxShelfState.description = uiUxShelf.description;
+          refreshedLearningCopy = true;
+        }
         const existingBookIds = new Set(state.books.map(book => book.id));
         let restoredInitialBooks = false;
         defaultBooks.forEach((book, index) => {
           if (existingBookIds.has(book.id)) return;
           state.books.push({
             ...book,
-            shelfId: defaultShelf.id,
+            shelfId: defaultShelfIdForBook(book),
             label: book.label || `Book ${String(index + 1).padStart(2, "0")}`
           });
           restoredInitialBooks = true;
@@ -6262,6 +7892,35 @@ git push origin feature/login</code></pre>
           page.history = Array.isArray(page.history) ? page.history : [];
           page.parentPageId = page.parentPageId || "";
         });
+        const normalizeRecord = record => {
+          const now = new Date().toISOString();
+          return {
+            id: record?.id || uid("record"),
+            types: normalizeTypes(record?.types || record?.type),
+            title: normalize(record?.title || "無題のrecord"),
+            body: String(record?.body || ""),
+            status: normalize(record?.status || (normalizeTypes(record?.types || record?.type).includes("task") ? "Todo" : "未整理")),
+            tags: Array.isArray(record?.tags) ? record.tags.map(item => normalize(item)).filter(Boolean) : [],
+            bookId: record?.bookId || "",
+            pageId: record?.pageId || "",
+            dueDate: record?.dueDate || "",
+            priority: record?.priority || "Middle",
+            sourceNoteId: record?.sourceNoteId || "",
+            createdAt: record?.createdAt || now,
+            updatedAt: record?.updatedAt || now
+          };
+        };
+        state.records = Array.isArray(state.records) ? state.records.map(normalizeRecord) : buildInitialRecords().map(normalizeRecord);
+        const ensureWorkspacePage = (id, bookId, title, description, contentHtml) => {
+          if (state.pages.some(page => page.id === id)) return false;
+          const now = new Date().toISOString();
+          state.pages.push({ id, bookId, title, description, parentPageId: "", contentHtml, history: [], createdAt: now, updatedAt: now });
+          return true;
+        };
+        let restoredWorkspacePages = false;
+        restoredWorkspacePages = ensureWorkspacePage("shared-records-database", "shared-database", "共有Database", "Wiki / Journal / Tasks / Dashboardで共有する全recordを一覧管理します。", "<p>すべてのrecordをテーブルで確認します。</p>") || restoredWorkspacePages;
+        restoredWorkspacePages = ensureWorkspacePage("shared-records-tasks", "tasks", "Tasks", "types に task を持つrecordだけを表示します。", "<p>タスクとして扱うrecordを状態別に確認します。</p>") || restoredWorkspacePages;
+        restoredWorkspacePages = ensureWorkspacePage("shared-records-dashboard", "dashboard", "Dashboard", "共有Databaseを集計して、未整理・疑問・タスク・用語の状態を俯瞰します。", "<p>共有recordのサマリーです。</p>") || restoredWorkspacePages;
         const initialExplicitPages = buildInitialPages().filter(page => !/^page-\d+$/.test(page.id));
         const existingPageIds = new Set(state.pages.map(page => page.id));
         let restoredInitialPages = false;
@@ -6270,8 +7929,19 @@ git push origin feature/login</code></pre>
           state.pages.push(page);
           restoredInitialPages = true;
         });
-        if (restoredInitialPages || restoredInitialBooks) {
-          state.status = restoredInitialPages && restoredInitialBooks ? "初期Bookと章を追加しました" : restoredInitialBooks ? "初期Bookを追加しました" : "初期章を追加しました";
+        const separatedUiUxPageIds = ["emoji-ui-ux", "font-ui-ux", "gif-ui-ux"];
+        let separatedUiUxPages = false;
+        separatedUiUxPageIds.forEach(pageId => {
+          const page = state.pages.find(item => item.id === pageId);
+          if (!page) return;
+          if (page.bookId !== "ui-ux" || page.parentPageId) {
+            page.bookId = "ui-ux";
+            page.parentPageId = "";
+            separatedUiUxPages = true;
+          }
+        });
+        if (restoredInitialPages || restoredInitialBooks || migratedShelves || refreshedLearningCopy || separatedUiUxPages || restoredWorkspacePages) {
+          state.status = restoredWorkspacePages ? "共有Databaseビューを追加しました" : separatedUiUxPages ? "EMOJI・フォント・GIFをUI/UXの別ページとして整理しました" : migratedShelves ? "UI/UXパーツ辞典をUI/UX本棚へ移動しました" : restoredInitialPages && restoredInitialBooks ? "初期Bookと章を追加しました" : restoredInitialBooks ? "初期Bookを追加しました" : restoredInitialPages ? "初期章を追加しました" : "学習ジャーナルの説明を更新しました";
           persistState();
         }
         let query = "";
@@ -6296,14 +7966,34 @@ git push origin feature/login</code></pre>
                   </label>
                   <button type="button" class="library-search-action" data-action="search">検索</button>
                   <button type="button" class="library-create-action" data-action="open-create-menu">＋ 作成</button>
-                  <button type="button" class="library-today-action" data-action="today-journal">今日の記録</button>
                   <div class="search-suggestions" aria-label="検索候補"></div>
+                </div>
+                <div class="library-shelf-switcher" aria-label="本棚切り替え">
+                  <button type="button" class="library-shelf-current" data-action="open-shelf-menu" aria-label="現在の本棚を切り替える">
+                    <span class="library-shelf-current-icon"></span>
+                    <span class="library-shelf-current-copy">
+                      <span class="library-shelf-current-kicker">現在の本棚</span>
+                      <span class="library-shelf-current-name"></span>
+                      <span class="library-shelf-current-desc"></span>
+                    </span>
+                    <span class="library-shelf-current-caret">切替 ▾</span>
+                  </button>
+                  <div class="library-shelf-tabs" aria-label="本棚一覧"></div>
                 </div>
                 <div class="category-row" aria-label="Bookナビ"></div>
               </div>
             </div>
           </div>
           <div class="wiki-dashboard">
+            <div class="wiki-mobile-bar" aria-label="モバイルナビゲーション">
+              <button type="button" class="wiki-mobile-menu-button" data-action="toggle-mobile-sidebar" aria-label="ページ一覧を開く">☰</button>
+              <div class="wiki-mobile-title">
+                <span class="wiki-mobile-kicker">Current page</span>
+                <span class="wiki-mobile-page-title"></span>
+              </div>
+              <button type="button" class="wiki-mobile-create-button" data-action="open-create-menu" aria-label="作成">＋</button>
+            </div>
+            <div class="wiki-mobile-backdrop" data-action="close-mobile-sidebar" aria-hidden="true"></div>
             <aside class="wiki-sidebar" aria-label="Wikiページツリー">
               <div class="wiki-workspace" aria-label="本棚切り替え">
                 <button type="button" class="wiki-workspace-toggle" data-action="open-shelf-menu" aria-label="本棚を切り替える">
@@ -6372,6 +8062,10 @@ git push origin feature/login</code></pre>
         toast.setAttribute("role", "status");
         toast.setAttribute("aria-live", "polite");
         app.appendChild(toast);
+        const blockPreviewPopover = document.createElement("aside");
+        blockPreviewPopover.className = "wiki-block-preview-popover";
+        blockPreviewPopover.setAttribute("aria-hidden", "true");
+        app.appendChild(blockPreviewPopover);
         let contextMenuActions = [];
         let toastTimer = null;
 
@@ -6379,6 +8073,10 @@ git push origin feature/login</code></pre>
           searchInput: app.querySelector(".library-search-input"),
           searchSuggestions: app.querySelector(".search-suggestions"),
           categoryRow: app.querySelector(".category-row"),
+          topShelfIcon: app.querySelector(".library-shelf-current-icon"),
+          topShelfName: app.querySelector(".library-shelf-current-name"),
+          topShelfDesc: app.querySelector(".library-shelf-current-desc"),
+          topShelfTabs: app.querySelector(".library-shelf-tabs"),
           shelfIcon: app.querySelector(".wiki-workspace-icon"),
           shelfName: app.querySelector(".wiki-workspace-name"),
           shelfSub: app.querySelector(".wiki-workspace-sub"),
@@ -6390,6 +8088,7 @@ git push origin feature/login</code></pre>
           icon: app.querySelector(".wiki-page-icon"),
           title: app.querySelector(".wiki-page-title"),
           summary: app.querySelector(".wiki-page-summary"),
+          mobilePageTitle: app.querySelector(".wiki-mobile-page-title"),
           editor: app.querySelector(".wiki-editor-root"),
           meta: app.querySelector(".wiki-inline-meta"),
           modeTabs: app.querySelector(".wiki-view-tabs"),
@@ -6430,7 +8129,7 @@ git push origin feature/login</code></pre>
             label: "",
             icon: "📝",
             title: "学習ジャーナル",
-            copy: "日々の気づき、学習メモ、疑問を未整理のまま残し、あとから設計資料へ育てます。",
+            copy: "日々の気づき、学習メモ、疑問を未整理のまま残し、あとから学習サイトとして確認できる形へ整理します。",
             shortTitle: "記録",
             shelfId: state.activeShelfId || state.shelves[0]?.id,
             tone: "#6f9f83",
@@ -6451,7 +8150,7 @@ git push origin feature/login</code></pre>
             description: "まだ分類しなくてよい気づき、学習メモ、疑問を一時的に集める場所です。",
             parentPageId: "",
             contentHtml: `
-              <div class="wiki-callout-block">
+	                <div class="wiki-callout-block" data-generated-content="backlinks">
                 <strong>未整理Inbox</strong>
                 <p>まずはここに書きます。あとから右クリックでBook、章、TODO、DB、用語ページへ変換できます。</p>
               </div>
@@ -6528,6 +8227,193 @@ git push origin feature/login</code></pre>
           render();
           showToast(`${state.status}（保存先: ${syncStatusLabel}）`);
         };
+        const recordHasType = (record, type) => normalizeTypes(record?.types).includes(type);
+        const recordHasAny = (record, types) => types.some(type => recordHasType(record, type));
+        const recordBook = record => state.books.find(book => book.id === record?.bookId);
+        const recordPage = record => state.pages.find(page => page.id === record?.pageId);
+        const recordTags = record => Array.isArray(record?.tags) ? record.tags : [];
+        const addRecordTypes = (record, types) => {
+          if (!record) return;
+          record.types = normalizeTypes([...(record.types || []), ...types]);
+          record.updatedAt = new Date().toISOString();
+        };
+        const removeRecordType = (record, type) => {
+          if (!record) return false;
+          const next = normalizeTypes(record.types).filter(item => item !== type);
+          if (!next.length) {
+            showToast("typeは最低1つ必要です。");
+            return false;
+          }
+          record.types = next;
+          record.updatedAt = new Date().toISOString();
+          return true;
+        };
+        const createRecord = (data = {}) => {
+          const now = new Date().toISOString();
+          const record = normalizeRecord({
+            id: data.id || uid("record"),
+            types: data.types || ["memo"],
+            title: data.title || "無題のrecord",
+            body: data.body || "",
+            status: data.status || "",
+            tags: data.tags || [],
+            bookId: data.bookId || activeBook()?.id || "",
+            pageId: data.pageId || activePage()?.id || "",
+            dueDate: data.dueDate || "",
+            priority: data.priority || "Middle",
+            sourceNoteId: data.sourceNoteId || "",
+            createdAt: now,
+            updatedAt: now
+          });
+          state.records.push(record);
+          return record;
+        };
+        const ensureRecordForNote = (noteElement, types = ["memo"]) => {
+          if (!noteElement) return null;
+          const noteId = noteElement.dataset.noteId || "";
+          const recordId = noteElement.dataset.recordId || "";
+          let record = state.records.find(item => item.id === recordId) || state.records.find(item => item.sourceNoteId === noteId);
+          if (!record) {
+            const page = activePage();
+            const text = textFromNoteElement(noteElement);
+            record = createRecord({
+              types,
+              title: noteTitle(text),
+              body: text,
+              status: "未整理",
+              tags: ["未整理"],
+              bookId: page?.bookId || state.activeBookId || "",
+              pageId: page?.id || "",
+              sourceNoteId: noteId
+            });
+          } else {
+            addRecordTypes(record, types);
+          }
+          noteElement.dataset.recordId = record.id;
+          return record;
+        };
+        const renderTypeChips = (record, editable = false) => {
+          const active = normalizeTypes(record.types);
+          if (!editable) {
+            return `<span class="record-type-list">${active.map(type => `<span class="record-type-chip is-active">${escapeHtml(type)}</span>`).join("")}</span>`;
+          }
+          return `<span class="record-type-list">${recordTypeOptions.map(type => `
+            <button type="button" class="record-type-chip${active.includes(type) ? " is-active" : ""}" data-action="toggle-record-type" data-record-id="${escapeHtml(record.id)}" data-record-type="${escapeHtml(type)}">${escapeHtml(type)}</button>
+          `).join("")}</span>`;
+        };
+        const renderRecordActions = record => `
+          <span class="record-actions">
+            <button type="button" class="wiki-mini-button" data-action="edit-record" data-record-id="${escapeHtml(record.id)}" title="recordを編集">✎</button>
+            ${record.pageId ? `<button type="button" class="wiki-mini-button" data-action="open-record-page" data-record-id="${escapeHtml(record.id)}" title="紐づくページを開く">↗</button>` : ""}
+            <button type="button" class="wiki-mini-button" data-action="delete-record" data-record-id="${escapeHtml(record.id)}" title="recordを削除">×</button>
+          </span>
+        `;
+        const renderRecordCard = record => `
+          <article class="shared-record-card" data-record-id="${escapeHtml(record.id)}">
+            <h4>${escapeHtml(record.title)}</h4>
+            <p>${escapeHtml(record.body || "本文なし")}</p>
+            ${renderTypeChips(record)}
+            <span class="record-tag-list">${recordTags(record).map(tag => `<span class="record-tag-chip">${escapeHtml(tag)}</span>`).join("")}</span>
+            <p><strong>Status:</strong> ${escapeHtml(record.status || "-")} / <strong>Priority:</strong> ${escapeHtml(record.priority || "-")}</p>
+            ${renderRecordActions(record)}
+          </article>
+        `;
+        const renderSharedDatabaseView = () => `
+          <div class="shared-record-panel">
+            <div class="shared-record-toolbar">
+              <div>
+                <h3 class="shared-record-title">共有Database</h3>
+                <p class="shared-record-sub">Wiki / Journal / Tasks / Dashboard が同じrecordを参照します。typeは複数選択できます。</p>
+              </div>
+              <button type="button" class="wiki-action-button" data-action="add-record">＋ record</button>
+            </div>
+            <div class="shared-record-table-wrap">
+              <table class="shared-record-table">
+                <thead><tr><th>Title</th><th>types</th><th>Status</th><th>Priority</th><th>Due</th><th>Book / Page</th><th>Tags</th><th>Actions</th></tr></thead>
+                <tbody>
+                  ${state.records.map(record => `
+                    <tr data-record-id="${escapeHtml(record.id)}">
+                      <td><strong>${escapeHtml(record.title)}</strong><br><small>${escapeHtml(record.body || "")}</small></td>
+                      <td>${renderTypeChips(record, true)}</td>
+                      <td><button type="button" class="wiki-subtle-button" data-action="set-record-status" data-record-id="${escapeHtml(record.id)}">${escapeHtml(record.status || "-")}</button></td>
+                      <td><button type="button" class="wiki-subtle-button" data-action="set-record-priority" data-record-id="${escapeHtml(record.id)}">${escapeHtml(record.priority || "-")}</button></td>
+                      <td>${escapeHtml(record.dueDate || "-")}</td>
+                      <td>${escapeHtml(recordBook(record)?.title || "-")}<br><small>${escapeHtml(recordPage(record)?.title || "")}</small></td>
+                      <td>${recordTags(record).map(tag => `<span class="record-tag-chip">${escapeHtml(tag)}</span>`).join("")}</td>
+                      <td>${renderRecordActions(record)}</td>
+                    </tr>
+                  `).join("") || `<tr><td colspan="8">recordがまだありません。</td></tr>`}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+        const renderTasksView = () => {
+          const statuses = ["Todo", "Doing", "Done", "Hold"];
+          const tasks = state.records.filter(record => recordHasType(record, "task"));
+          return `
+            <div class="shared-record-panel">
+              <div class="shared-record-toolbar">
+                <div>
+                  <h3 class="shared-record-title">Tasks</h3>
+                  <p class="shared-record-sub">types に task を含むrecordだけを表示します。同じrecordはDatabaseやJournal側にも反映されます。</p>
+                </div>
+                <button type="button" class="wiki-action-button" data-action="add-task-record">＋ task</button>
+              </div>
+              <div class="task-status-lane">
+                ${statuses.map(status => `
+                  <section class="task-lane">
+                    <h3>${escapeHtml(status)}</h3>
+                    ${(tasks.filter(record => (record.status || "Todo") === status).map(renderRecordCard).join("")) || `<p class="shared-record-sub">なし</p>`}
+                  </section>
+                `).join("")}
+              </div>
+            </div>
+          `;
+        };
+        const renderDashboardView = () => {
+          const metrics = [
+            ["All", state.records.length],
+            ["Memo", state.records.filter(record => recordHasType(record, "memo")).length],
+            ["Question", state.records.filter(record => recordHasType(record, "question")).length],
+            ["Task", state.records.filter(record => recordHasType(record, "task")).length],
+            ["Term", state.records.filter(record => recordHasType(record, "term")).length],
+            ["Done", state.records.filter(record => recordHasType(record, "task") && record.status === "Done").length]
+          ];
+          const latest = [...state.records].sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt))).slice(0, 6);
+          return `
+            <div class="shared-record-panel">
+              <div class="shared-record-grid">
+                ${metrics.map(([label, count]) => `<article class="shared-record-card dashboard-metric"><strong>${count}</strong><span>${escapeHtml(label)}</span></article>`).join("")}
+              </div>
+              <section class="shared-record-section">
+                <h3 class="shared-record-title">最近更新されたrecord</h3>
+                <div class="shared-record-grid">${latest.map(renderRecordCard).join("") || "<p>まだrecordがありません。</p>"}</div>
+              </section>
+            </div>
+          `;
+        };
+        const renderRelatedRecords = page => {
+          const related = state.records.filter(record => record.pageId === page.id || record.bookId === page.bookId);
+          if (!related.length) return "";
+          const groups = [
+            ["関連メモ", related.filter(record => recordHasType(record, "memo"))],
+            ["関連タスク", related.filter(record => recordHasType(record, "task"))],
+            ["関連用語", related.filter(record => recordHasType(record, "term"))],
+            ["関連疑問", related.filter(record => recordHasType(record, "question"))]
+          ].filter(([, items]) => items.length);
+          return `
+            <section class="related-records">
+              <h3>関連record</h3>
+              ${groups.map(([label, items]) => `
+                <div class="shared-record-section">
+                  <h4>${escapeHtml(label)}</h4>
+                  <div class="shared-record-grid">${items.slice(0, 4).map(renderRecordCard).join("")}</div>
+                </div>
+              `).join("")}
+            </section>
+          `;
+        };
         const pageTags = page => {
           const text = `${page?.title || ""} ${page?.description || ""} ${page?.contentHtml || ""}`;
           return keywordTags.filter(([, pattern]) => pattern.test(text)).map(([label]) => label).slice(0, 4);
@@ -6542,10 +8428,51 @@ git push origin feature/login</code></pre>
             const linked = state.pages.find(page => page.title === title.trim());
             return linked ? `<button type="button" class="wiki-backlink" data-page="${escapeHtml(linked.id)}">↗ ${escapeHtml(title.trim())}</button>` : `<span class="topic-tag">未作成: ${escapeHtml(title.trim())}</span>`;
           });
+        const enhanceDocumentTemplateLinks = root => {
+          if (!root) return;
+          root.querySelectorAll("table").forEach(table => {
+            const headers = Array.from(table.tHead?.rows?.[0]?.cells || []).map(cell => normalize(cell.textContent));
+            const docColumnIndex = headers.findIndex(header => header === "ドキュメント");
+            if (docColumnIndex < 0 || !headers.includes("フェーズ")) return;
+            const shell = table.closest(".wiki-table-shell") || table.parentElement;
+            const openPreview = values => {
+              if (!values) return;
+              root.querySelectorAll("[data-wiki-template-preview]").forEach(node => node.remove());
+              shell.insertAdjacentHTML("afterend", renderTemplatePreview(values));
+              shell.nextElementSibling?.querySelector("[data-action='close-template-preview']")?.addEventListener("click", () => {
+                shell.nextElementSibling?.remove();
+              });
+            };
+            Array.from(table.tBodies?.[0]?.rows || []).forEach(row => {
+              const cell = row.cells[docColumnIndex];
+              if (!cell || cell.querySelector(".doc-link")) return;
+              const originalName = normalize(cell.textContent);
+              const templateName = aliasToTemplate.get(originalName) || originalName;
+              const values = templateByName.get(templateName);
+              if (!values) return;
+              cell.textContent = "";
+              const button = document.createElement("button");
+              button.type = "button";
+              button.className = "doc-link";
+              button.textContent = originalName;
+              button.title = "テンプレート / フォーマットのイメージを見る";
+              button.dataset.templateName = templateName;
+              button.addEventListener("mouseenter", () => openPreview(values));
+              button.addEventListener("focus", () => openPreview(values));
+              button.addEventListener("click", event => {
+                event.preventDefault();
+                event.stopPropagation();
+                openPreview(values);
+              });
+              cell.append(button);
+            });
+          });
+        };
         const stripTableUiFromNode = root => {
           root.querySelectorAll(".wiki-table-toolbar, .wiki-table-col-actions").forEach(node => node.remove());
           root.querySelectorAll(".wiki-block-handle, .wiki-db-props").forEach(node => node.remove());
           root.querySelectorAll(".wiki-db-group-row").forEach(node => node.remove());
+          root.querySelectorAll("[data-generated-content]").forEach(node => node.remove());
           root.querySelectorAll(".wiki-block-shell").forEach(shell => {
             const content = shell.querySelector(":scope > .wiki-block-content");
             if (!content) return;
@@ -6579,6 +8506,11 @@ git push origin feature/login</code></pre>
           template.innerHTML = String(html || "");
           stripTableUiFromNode(template.content);
           return template.innerHTML.trim();
+        };
+        const cleanPageContentElement = element => {
+          const clone = element.cloneNode(true);
+          stripTableUiFromNode(clone);
+          return clone.innerHTML.trim();
         };
         const tableCellText = cell => {
           if (!cell) return "";
@@ -6905,6 +8837,7 @@ git push origin feature/login</code></pre>
           state.activePageId = state.activeBookId ? pagesForBook(state.activeBookId)[0]?.id || null : null;
           state.pageEditMode = false;
           state.editingEnabled = false;
+          state.mobileSidebarOpen = false;
           state.mode = "view";
           query = "";
           el.searchInput.value = "";
@@ -6917,6 +8850,7 @@ git push origin feature/login</code></pre>
           state.activePageId = pagesForBook(bookId)[0]?.id || null;
           state.pageEditMode = false;
           state.editingEnabled = false;
+          state.mobileSidebarOpen = false;
           state.mode = "view";
           query = "";
           el.searchInput.value = "";
@@ -6931,6 +8865,7 @@ git push origin feature/login</code></pre>
           state.activeBookId = page.bookId;
           state.pageEditMode = false;
           state.editingEnabled = false;
+          state.mobileSidebarOpen = false;
           state.mode = "view";
           render();
         };
@@ -7081,6 +9016,18 @@ git push origin feature/login</code></pre>
             el.editor.innerHTML = `<div class="wiki-empty-page">まだ章がありません。「章追加」からページを作成してください。</div>`;
             return;
           }
+          if (page.id === "shared-records-database") {
+            el.editor.innerHTML = renderSharedDatabaseView();
+            return;
+          }
+          if (page.id === "shared-records-tasks") {
+            el.editor.innerHTML = renderTasksView();
+            return;
+          }
+          if (page.id === "shared-records-dashboard") {
+            el.editor.innerHTML = renderDashboardView();
+            return;
+          }
           const backlinks = pageBacklinks(page);
           el.editor.innerHTML = `
             <div class="wiki-page-content">
@@ -7092,11 +9039,22 @@ git push origin feature/login</code></pre>
                   ${backlinks.map(item => `<button type="button" class="wiki-backlink" data-page="${escapeHtml(item.id)}">↩ ${escapeHtml(item.title)}</button>`).join("")}
                 </div>
               ` : ""}
+              ${renderRelatedRecords(page)}
             </div>
           `;
           enhanceWikiTables(el.editor, { editable: false });
+          enhanceDocumentTemplateLinks(el.editor);
         };
         const renderPageForm = (page, isNew) => {
+          const formText = value => {
+            const text = typeof value === "string" ? value : "";
+            return text
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#39;");
+          };
           const booksInCurrentShelf = shelfBooks();
           const fallbackBookId = booksInCurrentShelf.some(book => book.id === state.activeBookId) ? state.activeBookId : booksInCurrentShelf[0]?.id || "";
           const selectedBookId = page?.bookId || fallbackBookId;
@@ -7110,11 +9068,11 @@ git push origin feature/login</code></pre>
           ).join("");
           el.editor.innerHTML = `
             <form class="wiki-page-editor" data-form="${isNew ? "new-page" : "edit-page"}">
-              <div class="wiki-form-grid three">
-                <div class="wiki-field">
-                  <label>章タイトル</label>
-                  <input class="wiki-input" name="title" value="${escapeHtml(page?.title || "")}" required>
-                </div>
+	              <div class="wiki-form-grid three">
+	                <div class="wiki-field">
+	                  <label>章タイトル</label>
+	                  <input class="wiki-input" name="title" value="${formText(page?.title || "")}" required>
+	                </div>
                 <div class="wiki-field">
                   <label>所属Book</label>
                   <select class="wiki-select" name="bookId">${bookOptions}</select>
@@ -7124,10 +9082,10 @@ git push origin feature/login</code></pre>
                   <select class="wiki-select" name="parentPageId">${parentOptions}</select>
                 </div>
               </div>
-              <div class="wiki-field">
-                <label>短い説明</label>
-                <textarea class="wiki-textarea" name="description">${escapeHtml(page?.description || "")}</textarea>
-              </div>
+	              <div class="wiki-field">
+	                <label>短い説明</label>
+	                <textarea class="wiki-textarea" name="description">${formText(page?.description || "")}</textarea>
+	              </div>
               <div class="wiki-field">
                 <label>本文</label>
                 <div class="wiki-block-toolbar" aria-label="ブロック追加と変換">
@@ -7144,11 +9102,12 @@ git push origin feature/login</code></pre>
                   <button type="button" class="wiki-block-button" data-insert-block="synced">Synced</button>
                   <button type="button" class="wiki-block-button" data-insert-block="backlink">Backlink</button>
                   <button type="button" class="wiki-block-button" data-action="attach-file">File/Image</button>
-                  <button type="button" class="wiki-block-button" data-action="convert-heading">選択→見出し</button>
-                  <button type="button" class="wiki-block-button" data-action="convert-list">選択→List</button>
-                  <button type="button" class="wiki-block-button" data-action="convert-code">選択→Code</button>
-                </div>
-                <div class="wiki-slash-help">`/table` `/db` `/props` `/synced` `/todo` `/code` `/callout` を入力するとブロックに変換できます。</div>
+	                  <button type="button" class="wiki-block-button" data-action="convert-heading">選択→見出し</button>
+	                  <button type="button" class="wiki-block-button" data-action="convert-list">選択→List</button>
+	                  <button type="button" class="wiki-block-button" data-action="convert-code">選択→Code</button>
+	                  <button type="button" class="wiki-block-button" data-action="annotate-selection">選択→Annotation</button>
+	                </div>
+	                <div class="wiki-slash-help"><code>/table</code> <code>/db</code> <code>/props</code> <code>/synced</code> <code>/todo</code> <code>/code</code> <code>/callout</code> を入力するとブロックに変換できます。</div>
                 <div class="wiki-editable" contenteditable="true">${page?.contentHtml || "<p>ここに本文を書きます。</p>"}</div>
                 <input type="file" class="wiki-attach-input" hidden>
               </div>
@@ -7248,10 +9207,12 @@ git push origin feature/login</code></pre>
         `).join("");
         const render = () => {
           ensureActiveSelection();
+          if (state.pageEditMode && activePage() && state.mode === "view") state.mode = "edit-page";
           if (!state.pageEditMode && state.mode === "edit-page") state.mode = "view";
           state.editingEnabled = state.pageEditMode;
           app.classList.toggle("is-page-editing", Boolean(state.pageEditMode));
           app.classList.toggle("is-page-readonly", !state.pageEditMode);
+          app.classList.toggle("is-mobile-sidebar-open", Boolean(state.mobileSidebarOpen));
           const shelf = activeShelf();
           const book = activeBook();
           const page = activePage();
@@ -7265,6 +9226,22 @@ git push origin feature/login</code></pre>
           el.shelfIcon.textContent = shelf?.icon || "W";
           el.shelfName.textContent = shelf?.title || "本棚";
           el.shelfSub.textContent = shelf?.description || "local editable bookshelf";
+          if (el.topShelfIcon) el.topShelfIcon.textContent = shelf?.icon || "W";
+          if (el.topShelfName) el.topShelfName.textContent = shelf?.title || "本棚";
+          if (el.topShelfDesc) el.topShelfDesc.textContent = shelf?.description || "Bookを分類する本棚です。";
+          if (el.topShelfTabs) {
+            el.topShelfTabs.innerHTML = state.shelves.map(item => `
+              <button type="button" class="library-shelf-tab${item.id === state.activeShelfId ? " is-active" : ""}" data-shelf="${escapeHtml(item.id)}" aria-pressed="${item.id === state.activeShelfId ? "true" : "false"}" title="${escapeHtml(item.description || "")}">
+                <span class="library-shelf-tab-icon">${escapeHtml(item.icon || "W")}</span>
+                <span class="library-shelf-tab-text">${escapeHtml(item.title)}</span>
+              </button>
+            `).join("") + `
+              <button type="button" class="library-shelf-tab library-shelf-add-inline" data-action="new-shelf" title="本棚を追加">
+                <span class="library-shelf-tab-icon">＋</span>
+                <span class="library-shelf-tab-text">本棚追加</span>
+              </button>
+            `;
+          }
           if (el.shelfAdd) {
             el.shelfAdd.disabled = false;
             el.shelfAdd.title = "本棚を追加";
@@ -7308,7 +9285,7 @@ git push origin feature/login</code></pre>
               <div class="wiki-tree-book">
                 <div class="wiki-tree-book-head${item.id === state.activeBookId ? " is-active" : ""}" draggable="true" data-drag-type="book" data-drag-id="${escapeHtml(item.id)}">
                   <button type="button" class="wiki-caret" data-action="toggle-book" data-book-id="${escapeHtml(item.id)}" aria-label="${collapsed ? "開く" : "閉じる"}">${collapsed ? "›" : "⌄"}</button>
-                  <button type="button" class="wiki-book-button${item.id === state.activeBookId ? " is-active" : ""}" data-book="${escapeHtml(item.id)}">
+                  <button type="button" class="wiki-book-button${item.id === state.activeBookId ? " is-active" : ""}" data-book="${escapeHtml(item.id)}" title="クリックで開く / 選択中はクリックでBook編集">
                     <span class="wiki-book-icon" style="--book-mini:${escapeHtml(item.accent)};">${escapeHtml(item.icon)}</span>
                     <span><span class="wiki-book-title">${escapeHtml(item.title)}</span><span class="wiki-book-meta">${pages.length} chapters</span></span>
                   </button>
@@ -7331,6 +9308,7 @@ git push origin feature/login</code></pre>
           el.icon.style.background = book?.tone || "#315a72";
           el.title.textContent = state.mode === "new-book" ? "新しいBookを作成" : state.mode === "edit-book" ? "Bookを編集" : state.mode === "new-shelf" ? "新しい本棚を作成" : state.mode === "edit-shelf" ? "本棚を編集" : state.mode === "new-page" ? "新しい章を作成" : page?.title || book?.title || "Wiki";
           el.summary.textContent = state.mode === "new-book" ? "Book名、短縮名、アイコン、色、説明を登録します。" : state.mode === "edit-book" ? "Book名、短縮名、アイコン、色、説明、所属本棚を修正できます。" : state.mode === "new-shelf" ? "複数の本棚を作り、Bookを分類できます。" : state.mode === "edit-shelf" ? "本棚名、アイコン、説明を修正できます。" : state.mode === "new-page" ? "所属Bookを選び、章タイトルと本文を入力します。" : page?.description || book?.copy || "";
+          if (el.mobilePageTitle) el.mobilePageTitle.textContent = page?.title || book?.title || shelf?.title || "ページ未選択";
           const tags = pageTags(page);
           const backlinks = pageBacklinks(page);
           const history = Array.isArray(page?.history) ? page.history.slice(0, 5) : [];
@@ -7339,7 +9317,9 @@ git push origin feature/login</code></pre>
             <span class="wiki-meta-chip">ページ履歴</span>
             ${history.map((item, index) => `<button type="button" class="wiki-subtle-button" data-action="restore-history" data-history-index="${index}" title="この版に戻す">${escapeHtml(new Date(item.savedAt).toLocaleString("ja-JP"))} に戻す</button>`).join("")}
           ` : "";
-          if (query) {
+          if (state.mode === "edit-page") {
+            renderPageForm(page, false);
+          } else if (query) {
             el.editor.innerHTML = `
               <div class="topic-board-head"><h2 class="topic-board-title">検索結果</h2><span class="topic-count">${shownPages.length}件</span></div>
               <div class="topic-grid">
@@ -7353,8 +9333,6 @@ git push origin feature/login</code></pre>
                 }).join("") || `<p class="topic-empty">該当するページがありません。</p>`}
               </div>
             `;
-          } else if (state.mode === "edit-page") {
-            renderPageForm(page, false);
           } else if (state.mode === "new-page") {
             const defaultBookId = booksInShelf.some(item => item.id === state.activeBookId) ? state.activeBookId : booksInShelf[0]?.id || "";
             renderPageForm({ bookId: defaultBookId, parentPageId: state.pendingParentPageId || "", title: "", description: "", contentHtml: "<p>ここに本文を書きます。</p>" }, true);
@@ -7615,9 +9593,19 @@ git push origin feature/login</code></pre>
           const inbox = ensureInboxPage();
           const noteId = uid("note");
           const now = new Date().toISOString();
+          const record = createRecord({
+            types: ["memo"],
+            title: noteTitle(memo),
+            body: memo,
+            status: "未整理",
+            tags: ["未整理"],
+            bookId: inbox.bookId,
+            pageId: inbox.id,
+            sourceNoteId: noteId
+          });
           pushPageHistory(inbox);
           inbox.contentHtml += `
-            <div class="wiki-callout-block wiki-note-block" data-note-id="${escapeHtml(noteId)}" data-note-status="未整理">
+            <div class="wiki-callout-block wiki-note-block" data-note-id="${escapeHtml(noteId)}" data-record-id="${escapeHtml(record.id)}" data-note-status="未整理">
               <p>${escapeHtml(memo)}</p>
               <small>${escapeHtml(new Date(now).toLocaleString("ja-JP"))}</small>
             </div>
@@ -7655,6 +9643,7 @@ git push origin feature/login</code></pre>
           const noteId = noteElement.dataset.noteId;
           const text = textFromNoteElement(noteElement);
           const targetBookId = page.bookId || state.activeBookId;
+          const record = ensureRecordForNote(noteElement, mode === "term" ? ["memo", "term", "wiki"] : ["memo", "wiki"]);
           const newPage = {
             id: uid(`page-${slug(text)}`),
             bookId: targetBookId,
@@ -7667,6 +9656,12 @@ git push origin feature/login</code></pre>
             updatedAt: new Date().toISOString()
           };
           state.pages.push(newPage);
+          if (record) {
+            record.bookId = newPage.bookId;
+            record.pageId = newPage.id;
+            record.status = mode === "term" ? "用語化" : "章化";
+            record.updatedAt = new Date().toISOString();
+          }
           updateNoteInPageContent(page.id, noteId, () => null);
           state.activeBookId = newPage.bookId;
           state.activePageId = newPage.id;
@@ -7685,9 +9680,16 @@ git push origin feature/login</code></pre>
             showToast("追加先の章が見つかりませんでした");
             return;
           }
+          const record = ensureRecordForNote(noteElement, ["memo", "wiki"]);
           pushPageHistory(target);
-          target.contentHtml += `<div class="wiki-callout-block wiki-note-block" data-note-id="${escapeHtml(uid("note"))}" data-note-status="移動済み"><p>${escapeHtml(text)}</p></div>`;
+          target.contentHtml += `<div class="wiki-callout-block wiki-note-block" data-note-id="${escapeHtml(uid("note"))}" data-record-id="${escapeHtml(record?.id || "")}" data-note-status="移動済み"><p>${escapeHtml(text)}</p></div>`;
           target.updatedAt = new Date().toISOString();
+          if (record) {
+            record.bookId = target.bookId;
+            record.pageId = target.id;
+            record.status = "移動済み";
+            record.updatedAt = new Date().toISOString();
+          }
           updateNoteInPageContent(sourcePage.id, noteElement.dataset.noteId, () => null);
           state.activeBookId = target.bookId;
           state.activePageId = target.id;
@@ -7704,6 +9706,7 @@ git push origin feature/login</code></pre>
             showToast("移動先Bookが見つかりませんでした");
             return;
           }
+          const record = ensureRecordForNote(noteElement, ["memo", "wiki"]);
           const newPage = {
             id: uid(`page-${slug(text)}`),
             bookId: targetBook.id,
@@ -7716,6 +9719,12 @@ git push origin feature/login</code></pre>
             updatedAt: new Date().toISOString()
           };
           state.pages.push(newPage);
+          if (record) {
+            record.bookId = newPage.bookId;
+            record.pageId = newPage.id;
+            record.status = "移動済み";
+            record.updatedAt = new Date().toISOString();
+          }
           updateNoteInPageContent(sourcePage.id, noteElement.dataset.noteId, () => null);
           state.activeShelfId = targetBook.shelfId || state.activeShelfId;
           state.activeBookId = targetBook.id;
@@ -7727,13 +9736,23 @@ git push origin feature/login</code></pre>
           const page = activePage();
           if (!page) return;
           const text = textFromNoteElement(noteElement);
+          const record = ensureRecordForNote(noteElement, ["memo", "task"]);
+          if (record) {
+            record.status = "Todo";
+            record.updatedAt = new Date().toISOString();
+          }
           updateNoteInPageContent(page.id, noteElement.dataset.noteId, () => `<label class="wiki-todo-block"><input type="checkbox"> ${escapeHtml(text)}</label>`);
-          saveState("TODOに変換しました");
+          saveState("TODOに変換し、共有Tasksにも追加しました");
         };
         const convertNoteToDb = noteElement => {
           const page = activePage();
           if (!page) return;
           const text = textFromNoteElement(noteElement);
+          const record = ensureRecordForNote(noteElement, ["memo", "db"]);
+          if (record) {
+            record.status = "DB登録";
+            record.updatedAt = new Date().toISOString();
+          }
           updateNoteInPageContent(page.id, noteElement.dataset.noteId, () => `
             <div class="wiki-database-block" data-db-view="table">
               <span class="wiki-db-label">MEMO DATABASE</span>
@@ -7743,7 +9762,7 @@ git push origin feature/login</code></pre>
               </table>
             </div>
           `);
-          saveState("DB行に変換しました");
+          saveState("DB行に変換し、共有Databaseにも追加しました");
         };
         const convertTableToDatabase = table => {
           if (!table || table.closest(".wiki-database-block")) return;
@@ -7772,8 +9791,8 @@ git push origin feature/login</code></pre>
         };
         const showCreateMenu = (x, y) => {
           showContextMenu([
-            { label: "気づきメモ", run: () => addQuickMemo() },
-            { label: "今日の記録", run: () => openTodayJournal() },
+            { label: "気づきメモ（未整理Inbox）", run: () => addQuickMemo() },
+            { label: "今日の記録（空白ページ）", run: () => openTodayJournal() },
             { separator: true },
             { label: "新しい章", run: () => {
               if (!shelfBooks().length) {
@@ -7881,8 +9900,55 @@ git push origin feature/login</code></pre>
           enhanceWikiTables(editable, { editable: true });
           enhanceEditableBlocks(editable);
         };
+        const blockPreviewKeyForButton = button => {
+          if (!button) return "";
+          if (button.dataset.insertBlock) return button.dataset.insertBlock;
+          const actionMap = {
+            "attach-file": "attachFile",
+            "convert-heading": "convertHeading",
+            "convert-list": "convertList",
+            "convert-code": "convertCode",
+            "annotate-selection": "annotateSelection"
+          };
+          return actionMap[button.dataset.action] || "";
+        };
+        const showBlockPreview = button => {
+          const key = blockPreviewKeyForButton(button);
+          const preview = blockPreviewDefinitions[key];
+          if (!preview) return;
+          blockPreviewPopover.innerHTML = `
+            <div class="wiki-block-preview-head">
+              <h3 class="wiki-block-preview-title">${escapeHtml(preview.title)}</h3>
+              <span class="wiki-block-preview-kind">${escapeHtml(preview.kind)}</span>
+            </div>
+            <p class="wiki-block-preview-desc">${escapeHtml(preview.desc)}</p>
+            <div class="wiki-block-preview-sample">${preview.sample}</div>
+          `;
+          blockPreviewPopover.classList.add("is-visible");
+          blockPreviewPopover.setAttribute("aria-hidden", "false");
+          const rect = button.getBoundingClientRect();
+          const margin = 12;
+          const width = Math.min(320, window.innerWidth - 32);
+          const estimatedHeight = 210;
+          let left = rect.left;
+          let top = rect.bottom + 10;
+          if (left + width > window.innerWidth - margin) left = window.innerWidth - width - margin;
+          if (left < margin) left = margin;
+          if (top + estimatedHeight > window.innerHeight - margin) top = Math.max(margin, rect.top - estimatedHeight - 10);
+          if (window.matchMedia("(max-width: 700px)").matches) {
+            left = 12;
+            top = Math.max(12, window.innerHeight - estimatedHeight - 12);
+          }
+          blockPreviewPopover.style.left = `${left}px`;
+          blockPreviewPopover.style.top = `${top}px`;
+        };
+        const hideBlockPreview = () => {
+          blockPreviewPopover.classList.remove("is-visible");
+          blockPreviewPopover.setAttribute("aria-hidden", "true");
+          blockPreviewPopover.innerHTML = "";
+        };
         const unwrapBlockShells = root => {
-          root.querySelectorAll(":scope > .wiki-block-shell").forEach(shell => {
+          root.querySelectorAll(".wiki-block-shell").forEach(shell => {
             const content = shell.querySelector(":scope > .wiki-block-content");
             if (!content) return;
             const fragment = document.createDocumentFragment();
@@ -7893,9 +9959,7 @@ git push origin feature/login</code></pre>
         const enhanceEditableBlocks = root => {
           if (!root) return;
           unwrapBlockShells(root);
-          Array.from(root.children).forEach(child => {
-            if (child.classList.contains("wiki-table-toolbar")) return;
-            if (child.classList.contains("wiki-db-props")) return;
+          const wrapBlock = child => {
             const shell = document.createElement("div");
             shell.className = "wiki-block-shell";
             shell.draggable = true;
@@ -7912,6 +9976,19 @@ git push origin feature/login</code></pre>
             child.parentNode.insertBefore(shell, child);
             content.appendChild(child);
             shell.append(handle, content);
+          };
+          Array.from(root.children).forEach(child => {
+            if (child.classList.contains("wiki-table-toolbar")) return;
+            if (child.classList.contains("wiki-db-props")) return;
+            if (child.classList.contains("summary-grid")) {
+              Array.from(child.children).forEach(card => {
+                if (card.classList.contains("wiki-table-toolbar")) return;
+                if (card.classList.contains("wiki-db-props")) return;
+                wrapBlock(card);
+              });
+              return;
+            }
+            wrapBlock(child);
           });
         };
         const blockElementFromShell = shell => shell?.querySelector(":scope > .wiki-block-content")?.firstElementChild || null;
@@ -8008,6 +10085,92 @@ git push origin feature/login</code></pre>
             document.execCommand("insertHTML", false, `<pre><code>${escapeHtml(selectedText)}</code></pre>`);
           }
         };
+        const selectedRangeIn = container => {
+          if (!container) return null;
+          const selection = window.getSelection();
+          if (!selection || selection.rangeCount === 0 || !selection.toString().trim()) return null;
+          const range = selection.getRangeAt(0);
+          const start = range.startContainer.nodeType === Node.ELEMENT_NODE ? range.startContainer : range.startContainer.parentElement;
+          const end = range.endContainer.nodeType === Node.ELEMENT_NODE ? range.endContainer : range.endContainer.parentElement;
+          if (!start || !end || !container.contains(start) || !container.contains(end)) return null;
+          return range;
+        };
+        const isPageContentContainer = container => Boolean(
+          container?.classList?.contains("wiki-page-content") ||
+          container?.classList?.contains("wiki-editor-root")
+        );
+        const persistAnnotatedView = container => {
+          const page = activePage();
+          if (!page || !isPageContentContainer(container)) return;
+          pushPageHistory(page);
+          page.contentHtml = cleanPageContentElement(container);
+          page.updatedAt = new Date().toISOString();
+          persistState();
+        };
+        const addAnnotationToSelection = (container, color = "yellow") => {
+          const range = selectedRangeIn(container);
+          if (!range) {
+            showToast("アノテーションしたい文字を選択してください。");
+            return;
+          }
+          const selectedText = range.toString().trim();
+          const note = prompt("このアノテーションのメモを書きますか？", "");
+          const mark = document.createElement("mark");
+          mark.className = "wiki-annotation";
+          mark.dataset.annotationId = uid("annotation");
+          mark.dataset.annotationColor = color;
+          mark.dataset.annotationNote = normalize(note || "");
+          mark.title = mark.dataset.annotationNote || "アノテーション";
+          try {
+            mark.appendChild(range.extractContents());
+            range.insertNode(mark);
+          } catch {
+            mark.textContent = selectedText;
+            range.deleteContents();
+            range.insertNode(mark);
+          }
+          window.getSelection()?.removeAllRanges();
+          if (isPageContentContainer(container)) persistAnnotatedView(container);
+          showToast("アノテーションを追加しました");
+        };
+        const editAnnotation = annotation => {
+          if (!annotation) return;
+          const note = prompt("アノテーションメモ", annotation.dataset.annotationNote || "");
+          if (note === null) return;
+          annotation.dataset.annotationNote = normalize(note);
+          annotation.title = annotation.dataset.annotationNote || "アノテーション";
+          const content = annotation.closest(".wiki-page-content, .wiki-editor-root");
+          if (content) persistAnnotatedView(content);
+          showToast("アノテーションを更新しました");
+        };
+        const setAnnotationColor = (annotation, color) => {
+          if (!annotation) return;
+          annotation.dataset.annotationColor = color;
+          const content = annotation.closest(".wiki-page-content, .wiki-editor-root");
+          if (content) persistAnnotatedView(content);
+          showToast("アノテーション色を変更しました");
+        };
+        const removeAnnotation = annotation => {
+          if (!annotation) return;
+          const content = annotation.closest(".wiki-page-content, .wiki-editor-root");
+          const fragment = document.createDocumentFragment();
+          Array.from(annotation.childNodes).forEach(node => fragment.appendChild(node));
+          annotation.replaceWith(fragment);
+          if (content) persistAnnotatedView(content);
+          showToast("アノテーションを解除しました");
+        };
+        const showAnnotationMenu = (annotation, x, y) => {
+          showContextMenu([
+            { label: "メモを編集", run: () => editAnnotation(annotation) },
+            { separator: true },
+            { label: "黄色にする", run: () => setAnnotationColor(annotation, "yellow") },
+            { label: "ピンクにする", run: () => setAnnotationColor(annotation, "pink") },
+            { label: "青にする", run: () => setAnnotationColor(annotation, "blue") },
+            { label: "緑にする", run: () => setAnnotationColor(annotation, "green") },
+            { separator: true },
+            { label: "アノテーション解除", danger: true, run: () => removeAnnotation(annotation) }
+          ], x, y, "Annotation");
+        };
         const insertAttachment = file => {
           const editable = activeEditable();
           if (!editable || !file) return;
@@ -8026,6 +10189,23 @@ git push origin feature/login</code></pre>
           };
           reader.readAsDataURL(file);
         };
+        app.addEventListener("mouseover", event => {
+          const button = event.target.closest(".wiki-block-button");
+          if (button && app.contains(button)) showBlockPreview(button);
+        });
+        app.addEventListener("mouseout", event => {
+          const button = event.target.closest(".wiki-block-button");
+          if (!button) return;
+          const next = event.relatedTarget;
+          if (!next || !button.contains(next)) hideBlockPreview();
+        });
+        app.addEventListener("focusin", event => {
+          const button = event.target.closest(".wiki-block-button");
+          if (button) showBlockPreview(button);
+        });
+        app.addEventListener("focusout", event => {
+          if (event.target.closest(".wiki-block-button")) hideBlockPreview();
+        });
         app.addEventListener("click", event => {
           if (!event.target.closest(".wiki-context-menu")) closeContextMenu();
           const blockHandle = event.target.closest("[data-block-handle]");
@@ -8103,9 +10283,24 @@ git push origin feature/login</code></pre>
             insertHtmlIntoEditor(template);
             return;
           }
+          const shelfButton = event.target.closest("[data-shelf]");
+          if (shelfButton) {
+            setActiveShelf(shelfButton.dataset.shelf);
+            return;
+          }
           const actionButton = event.target.closest("[data-action]");
           if (actionButton) {
             const action = actionButton.dataset.action;
+            if (action === "toggle-mobile-sidebar") {
+              state.mobileSidebarOpen = !state.mobileSidebarOpen;
+              render();
+              return;
+            }
+            if (action === "close-mobile-sidebar") {
+              state.mobileSidebarOpen = false;
+              render();
+              return;
+            }
             if (action === "set-read-mode") {
               if (state.mode === "edit-page" && !confirm("編集中の内容は保存されていない場合があります。閲覧に戻りますか？")) return;
               state.pageEditMode = false;
@@ -8115,6 +10310,8 @@ git push origin feature/login</code></pre>
               return;
             }
             if (action === "set-edit-mode") {
+              query = "";
+              el.searchInput.value = "";
               state.pageEditMode = true;
               state.editingEnabled = true;
               state.mode = activePage() ? "edit-page" : "view";
@@ -8125,7 +10322,62 @@ git push origin feature/login</code></pre>
               warnReadOnly();
               return;
             }
-            if (action === "open-create-menu") {
+            if (action === "add-record" || action === "add-task-record") {
+              const title = normalize(prompt(action === "add-task-record" ? "タスク名" : "recordタイトル", ""));
+              if (!title) return;
+              const body = normalize(prompt("本文 / メモ", ""));
+              createRecord({
+                types: action === "add-task-record" ? ["memo", "task"] : ["memo"],
+                title,
+                body,
+                status: action === "add-task-record" ? "Todo" : "未整理",
+                tags: [],
+                bookId: activeBook()?.id || "",
+                pageId: activePage()?.id || ""
+              });
+              saveState(action === "add-task-record" ? "共有Tasksに追加しました" : "共有Databaseにrecordを追加しました");
+            } else if (action === "toggle-record-type") {
+              const record = state.records.find(item => item.id === actionButton.dataset.recordId);
+              const type = actionButton.dataset.recordType;
+              if (!record || !type) return;
+              if (recordHasType(record, type)) removeRecordType(record, type);
+              else addRecordTypes(record, [type]);
+              saveState("recordのtypesを更新しました");
+            } else if (action === "set-record-status") {
+              const record = state.records.find(item => item.id === actionButton.dataset.recordId);
+              if (!record) return;
+              const next = normalize(prompt("Status", record.status || "Todo"));
+              if (!next) return;
+              record.status = next;
+              record.updatedAt = new Date().toISOString();
+              saveState("recordのStatusを更新しました");
+            } else if (action === "set-record-priority") {
+              const record = state.records.find(item => item.id === actionButton.dataset.recordId);
+              if (!record) return;
+              const next = normalize(prompt("Priority", record.priority || "Middle"));
+              if (!next) return;
+              record.priority = next;
+              record.updatedAt = new Date().toISOString();
+              saveState("recordのPriorityを更新しました");
+            } else if (action === "edit-record") {
+              const record = state.records.find(item => item.id === actionButton.dataset.recordId);
+              if (!record) return;
+              const title = normalize(prompt("recordタイトル", record.title));
+              if (!title) return;
+              const body = prompt("本文 / メモ", record.body || "");
+              record.title = title;
+              record.body = body == null ? record.body : body;
+              record.updatedAt = new Date().toISOString();
+              saveState("recordを編集しました");
+            } else if (action === "open-record-page") {
+              const record = state.records.find(item => item.id === actionButton.dataset.recordId);
+              if (record?.pageId) setActivePage(record.pageId);
+            } else if (action === "delete-record") {
+              const record = state.records.find(item => item.id === actionButton.dataset.recordId);
+              if (!record || !confirm(`record「${record.title}」を削除しますか？`)) return;
+              state.records = state.records.filter(item => item.id !== record.id);
+              saveState("recordを削除しました");
+            } else if (action === "open-create-menu") {
               const rect = actionButton.getBoundingClientRect();
               showCreateMenu(rect.left, rect.bottom + 8);
             } else if (action === "today-journal") {
@@ -8219,6 +10471,8 @@ git push origin feature/login</code></pre>
               convertSelection("list");
             } else if (action === "convert-code") {
               convertSelection("code");
+            } else if (action === "annotate-selection") {
+              addAnnotationToSelection(activeEditable(), "yellow");
             } else if (action === "restore-history") {
               const page = activePage();
               const entry = page?.history?.[Number(actionButton.dataset.historyIndex)];
@@ -8250,6 +10504,7 @@ git push origin feature/login</code></pre>
             }
             return;
           }
+          const treeBookButton = event.target.closest(".wiki-tree-book-head .wiki-book-button[data-book]");
           const bookButton = event.target.closest("[data-book]");
           const pageButton = event.target.closest("[data-page]");
           if (pageButton) {
@@ -8258,10 +10513,25 @@ git push origin feature/login</code></pre>
             setActivePage(pageButton.dataset.page);
             return;
           }
+          if (treeBookButton) {
+            const bookId = treeBookButton.dataset.book;
+            if (bookId === state.activeBookId) {
+              renameBook(bookId);
+            } else {
+              setActiveBook(bookId);
+            }
+            return;
+          }
           if (bookButton) {
             setActiveBook(bookButton.dataset.book);
             return;
           }
+        });
+        app.addEventListener("dblclick", event => {
+          const treeBookButton = event.target.closest(".wiki-tree-book-head .wiki-book-button[data-book]");
+          if (!treeBookButton) return;
+          event.preventDefault();
+          renameBook(treeBookButton.dataset.book);
         });
         app.addEventListener("contextmenu", event => {
           const menuTarget = event.target.closest(".wiki-context-menu");
@@ -8275,7 +10545,7 @@ git push origin feature/login</code></pre>
             return;
           }
           const topCreate = event.target.closest(".library-main-panel, .category-row");
-          if (topCreate && !event.target.closest("[data-book], [data-page], .library-search, .search-suggestions")) {
+          if (topCreate && !event.target.closest("[data-book], [data-page], [data-shelf], .library-search, .search-suggestions, .library-shelf-switcher")) {
             event.preventDefault();
             showCreateMenu(event.clientX, event.clientY);
             return;
@@ -8285,6 +10555,40 @@ git push origin feature/login</code></pre>
             event.preventDefault();
             showNoteMenu(noteElement, event.clientX, event.clientY);
             return;
+          }
+          const annotation = event.target.closest(".wiki-annotation");
+          if (annotation) {
+            event.preventDefault();
+            showAnnotationMenu(annotation, event.clientX, event.clientY);
+            return;
+          }
+          const recordCard = event.target.closest("[data-record-id]");
+          if (recordCard && !event.target.closest("button")) {
+            const record = state.records.find(item => item.id === recordCard.dataset.recordId);
+            if (record) {
+              event.preventDefault();
+              showContextMenu([
+                { label: "recordを編集", run: () => {
+                  const title = normalize(prompt("recordタイトル", record.title));
+                  if (!title) return;
+                  const body = prompt("本文 / メモ", record.body || "");
+                  record.title = title;
+                  record.body = body == null ? record.body : body;
+                  record.updatedAt = new Date().toISOString();
+                  saveState("recordを編集しました");
+                } },
+                { label: "task typeを追加", run: () => { addRecordTypes(record, ["task"]); if (!record.status || record.status === "未整理") record.status = "Todo"; saveState("task typeを追加しました"); } },
+                { label: "term typeを追加", run: () => { addRecordTypes(record, ["term"]); saveState("term typeを追加しました"); } },
+                { label: "wiki typeを追加", run: () => { addRecordTypes(record, ["wiki"]); saveState("wiki typeを追加しました"); } },
+                { separator: true },
+                { label: "recordを削除", danger: true, run: () => {
+                  if (!confirm(`record「${record.title}」を削除しますか？`)) return;
+                  state.records = state.records.filter(item => item.id !== record.id);
+                  saveState("recordを削除しました");
+                } }
+              ], event.clientX, event.clientY, record.title);
+              return;
+            }
           }
           const tableShell = event.target.closest(".wiki-table-shell");
           if (tableShell) {
@@ -8381,36 +10685,37 @@ git push origin feature/login</code></pre>
           const editable = event.target.closest(".wiki-editable");
           if (editable && canEditPageContent()) {
             title = "Block";
-            items.push(
-              { label: "Textを追加", run: () => insertHtmlIntoEditor(blockTemplates.paragraph) },
-              { label: "見出しを追加", run: () => insertHtmlIntoEditor(blockTemplates.heading) },
-              { label: "Calloutを追加", run: () => insertHtmlIntoEditor(blockTemplates.callout) },
-              { label: "Codeを追加", run: () => insertHtmlIntoEditor(blockTemplates.code) },
-              { label: "Tableを追加", run: () => insertHtmlIntoEditor(blockTemplates.table) },
-              { label: "Databaseを追加", run: () => insertHtmlIntoEditor(blockTemplates.database) },
-              { separator: true },
-              { label: "選択を見出しへ", run: () => convertSelection("heading") },
-              { label: "選択をListへ", run: () => convertSelection("list") },
-              { label: "選択をCodeへ", run: () => convertSelection("code") }
-            );
+	            items.push(
+	              { label: "Textを追加", run: () => insertHtmlIntoEditor(blockTemplates.paragraph) },
+	              { label: "見出しを追加", run: () => insertHtmlIntoEditor(blockTemplates.heading) },
+	              { label: "Calloutを追加", run: () => insertHtmlIntoEditor(blockTemplates.callout) },
+	              { label: "Codeを追加", run: () => insertHtmlIntoEditor(blockTemplates.code) },
+	              { label: "Tableを追加", run: () => insertHtmlIntoEditor(blockTemplates.table) },
+	              { label: "Databaseを追加", run: () => insertHtmlIntoEditor(blockTemplates.database) },
+	              { separator: true },
+	              { label: "選択をアノテーション", run: () => addAnnotationToSelection(editable, "yellow") },
+	              { label: "選択を見出しへ", run: () => convertSelection("heading") },
+	              { label: "選択をListへ", run: () => convertSelection("list") },
+	              { label: "選択をCodeへ", run: () => convertSelection("code") }
+	            );
             event.preventDefault();
             showContextMenu(items, event.clientX, event.clientY, title);
             return;
           }
-          const content = event.target.closest(".wiki-page-content");
-          if (content) {
-            title = "Page";
-            items.push(
-              { label: "気づきメモを追加", run: () => addQuickMemo() },
-              { label: "今日の記録を開く", run: () => openTodayJournal() },
-              { separator: true },
-              { label: "編集モードにする", run: () => {
-                state.pageEditMode = true;
+	          const content = event.target.closest(".wiki-page-content, .wiki-editor-root");
+	          if (content) {
+	            title = "Page";
+	            items.push(
+	              { label: "選択をアノテーション", run: () => addAnnotationToSelection(content, "yellow") },
+	              { label: "選択をピンクでAnnotation", run: () => addAnnotationToSelection(content, "pink") },
+	              { label: "選択を青でAnnotation", run: () => addAnnotationToSelection(content, "blue") },
+	              { separator: true },
+	              { label: "編集モードにする", run: () => {
+	                state.pageEditMode = true;
                 state.editingEnabled = true;
                 state.mode = activePage() ? "edit-page" : "view";
                 saveState("編集に切り替えました");
-              } },
-              { label: "JSONを書き出す", run: () => app.querySelector('[data-action="export-json"]')?.click() }
+              } }
             );
             event.preventDefault();
             showContextMenu(items, event.clientX, event.clientY, title);
@@ -8420,25 +10725,13 @@ git push origin feature/login</code></pre>
           if (topicBoard) {
             title = "Page";
             items.push(
-              { label: "気づきメモを追加", run: () => addQuickMemo() },
-              { label: "今日の記録を開く", run: () => openTodayJournal() },
-              { separator: true },
               { label: state.pageEditMode ? "読むモードにする" : "編集モードにする", run: () => {
+                query = "";
+                el.searchInput.value = "";
                 state.pageEditMode = !state.pageEditMode;
                 state.editingEnabled = state.pageEditMode;
                 state.mode = state.pageEditMode && activePage() ? "edit-page" : "view";
                 saveState(state.pageEditMode ? "編集に切り替えました" : "閲覧に切り替えました");
-              } },
-              { label: "新しい章", run: () => {
-                state.activeManagementMenu = "chapter";
-                state.pendingParentPageId = "";
-                state.mode = "new-page";
-                render();
-              } },
-              { label: "新しいBook", run: () => {
-                state.activeManagementMenu = "book";
-                state.mode = "new-book";
-                render();
               } }
             );
             event.preventDefault();
@@ -8453,7 +10746,12 @@ git push origin feature/login</code></pre>
           item?.run?.();
         });
         document.addEventListener("keydown", event => {
-          if (event.key === "Escape") closeContextMenu();
+          if (event.key !== "Escape") return;
+          closeContextMenu();
+          if (state.mobileSidebarOpen) {
+            state.mobileSidebarOpen = false;
+            render();
+          }
         });
         document.addEventListener("scroll", closeContextMenu, true);
         app.addEventListener("change", event => {
@@ -8572,19 +10870,28 @@ git push origin feature/login</code></pre>
               const imported = JSON.parse(reader.result);
               if (!imported?.books?.length || !Array.isArray(imported.pages)) throw new Error("invalid");
               imported.shelves = Array.isArray(imported.shelves) && imported.shelves.length ? imported.shelves : [{ ...defaultShelf }];
+              defaultShelves.forEach(defaultItem => {
+                if (imported.shelves.some(shelf => shelf.id === defaultItem.id)) return;
+                imported.shelves.push({ ...defaultItem });
+              });
               imported.activeShelfId = imported.shelves.some(shelf => shelf.id === imported.activeShelfId) ? imported.activeShelfId : imported.shelves[0].id;
               imported.books.forEach(book => {
-                book.shelfId = book.shelfId || imported.activeShelfId;
+                book.shelfId = book.id === "ui-ux" ? uiUxShelf.id : book.shelfId || defaultShelf.id;
               });
               imported.pages.forEach(page => {
                 page.history = Array.isArray(page.history) ? page.history : [];
                 page.parentPageId = page.parentPageId || "";
               });
+              imported.records = Array.isArray(imported.records) ? imported.records.map(normalizeRecord) : [];
               imported.pageEditMode = Boolean(imported.pageEditMode ?? imported.editingEnabled);
               imported.editingEnabled = imported.pageEditMode;
               imported.activeManagementMenu = imported.activeManagementMenu || null;
               imported.pendingParentPageId = imported.pendingParentPageId || "";
+              imported.mobileSidebarOpen = false;
               state = imported;
+              ensureWorkspacePage("shared-records-database", "shared-database", "共有Database", "Wiki / Journal / Tasks / Dashboardで共有する全recordを一覧管理します。", "<p>すべてのrecordをテーブルで確認します。</p>");
+              ensureWorkspacePage("shared-records-tasks", "tasks", "Tasks", "types に task を持つrecordだけを表示します。", "<p>タスクとして扱うrecordを状態別に確認します。</p>");
+              ensureWorkspacePage("shared-records-dashboard", "dashboard", "Dashboard", "共有Databaseを集計して、未整理・疑問・タスク・用語の状態を俯瞰します。", "<p>共有recordのサマリーです。</p>");
               state.status = "JSONから復元しました";
               persistState();
               query = "";
