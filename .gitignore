@@ -4,6 +4,8 @@ outputs/*
 !outputs/
 !outputs/system-design-basics-ja.html
 !outputs/wiki-sync-server.mjs
+!outputs/styles/
+!outputs/styles/*.css
 outputs/wiki-state.json
 npm-debug.log*
 yarn-debug.log*

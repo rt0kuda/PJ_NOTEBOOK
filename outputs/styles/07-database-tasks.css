@@ -1,0 +1,233 @@
+.shared-record-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.shared-record-toolbar,
+.shared-record-card,
+.shared-record-section {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffefa;
+  padding: 14px;
+}
+
+.shared-record-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shared-record-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.shared-record-sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.shared-record-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.shared-record-card {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.shared-record-card h4 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.shared-record-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.record-type-list,
+.record-tag-list,
+.record-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.record-type-chip,
+.record-tag-chip {
+  border: 1px solid #eadfd4;
+  border-radius: 999px;
+  background: #f8efe6;
+  color: #6f5b52;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 8px;
+}
+
+.record-type-chip.is-active {
+  border-color: #f15b61;
+  background: #fff0ee;
+  color: #8f2722;
+}
+
+button.record-type-chip {
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+
+.shared-record-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffefa;
+}
+
+.shared-record-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+}
+
+.shared-record-table th,
+.shared-record-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 13px;
+}
+
+.shared-record-table th {
+  background: #f8efe6;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.shared-record-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.task-status-lane {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.task-lane {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffefa;
+  padding: 12px;
+}
+
+.task-lane h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.dashboard-metric {
+  border-top: 5px solid #315a72;
+}
+
+.dashboard-metric strong {
+  color: var(--ink);
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.related-records {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.wiki-db-prop small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.wiki-db-group-row td {
+  background: #f8efe6 !important;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.wiki-synced-label,
+.wiki-db-label,
+.wiki-file-label {
+  display: inline-flex;
+  margin-bottom: 7px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 7px;
+}
+
+.wiki-attachment-block img,
+.wiki-attachment-block video {
+  display: block;
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+.wiki-backlink {
+  width: 100%;
+  border: 0;
+  border-radius: 9px;
+  background: #f8efe6;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 5px;
+  padding: 7px 8px;
+  text-align: left;
+}
+
+.wiki-history-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.wiki-history-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 7px;
+}
+
+.wiki-history-item span {
+  color: var(--muted);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
